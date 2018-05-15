@@ -7,3 +7,8 @@ F:\zl\Project\MyProject2\MyProject\MyProject.Services\obj\Debug\MyProject.Servic
 F:\zl\Project\MyProject2\MyProject\MyProject.Services\bin\Debug\MyProject.Services.dll
 F:\zl\Project\MyProject2\MyProject\MyProject.Services\bin\Debug\MyProject.Services.pdb
 F:\zl\Project\MyProject2\MyProject\MyProject.Services\obj\Debug\MyProject.Services.pdb
+F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Services\bin\Debug\MyProject.Services.dll
+F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Services\bin\Debug\MyProject.Services.pdb
+F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Services\obj\Debug\MyProject.Services.csprojResolveAssemblyReference.cache
+F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Services\obj\Debug\MyProject.Services.dll
+F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Services\obj\Debug\MyProject.Services.pdb

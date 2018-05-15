@@ -1,7 +1,7 @@
 ﻿function DeletePost(url, data) {
     if (confirm('是否确定删除?')) {
         $.post(url, data, function () { 
-            $.ligerDialog.alert('删除成功', '提示', type);
+            alert('删除成功');
             window.location.reload();
         });
     }

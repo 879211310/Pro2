@@ -62,8 +62,7 @@ namespace MyProject.Areas.WeiXin.Controllers.Api
                 message = AcceptMessageAPI.Parse(decryptMsg);
             }
             var response = _sdk.Execute(message);//处理接收到的信息
-            var encryptMsg = string.Empty;
-
+            var encryptMsg = string.Empty; 
             #region 加密
             if (safeMode)
             {

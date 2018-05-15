@@ -42,7 +42,7 @@
                 $.ligerDialog.error('请选择一行')//弹窗
             }else
             {
-                $.ligerDialog.confirm('确实要删除么？', function (yes) {DeletePostBox("/weixin/WeiXinReplyMessage/Del?id="+selectRowId) });
+               DeletePost("/weixin/WeiXinReplyMessage/Del?id="+selectRowId) ;
             } 
         } 
 

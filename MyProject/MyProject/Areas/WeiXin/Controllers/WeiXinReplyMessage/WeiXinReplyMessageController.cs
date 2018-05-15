@@ -38,7 +38,7 @@ namespace MyProject.Areas.WeiXin.Controllers.WeiXinReplyMessage
             var madiaList = _mediaMessage.GetList().ToSelectList(c => c.MediaId, c => c.MediaType + "-" + c.MediaTitle);
             madiaList.Insert(0, new SelectListItem { Text = "请选择", Value = string.Empty });
             ViewData["MediaIdList"] = madiaList;
-            var picurlList = _mediaMessage.GetList().Where(c => c.MediaType == "image").ToSelectList(c => c.Url, c => c.MediaType + "-" + c.MediaTitle);
+            var picurlList = _mediaMessage.GetList().Where(c => c.MediaType == "image" && c.Url!=null).ToSelectList(c => c.Url, c => c.MediaType + "-" + c.MediaTitle);
             picurlList.Insert(0, new SelectListItem { Text = "请选择", Value = string.Empty });
             ViewData["picurlList"] = picurlList;
             model.MsgType = "1";
@@ -50,7 +50,7 @@ namespace MyProject.Areas.WeiXin.Controllers.WeiXinReplyMessage
                 {
                     model = EntityMapper.Map<MyProject.Core.Entities.WeiXinReplyMessage, WeiXinReplyMessageModel>(info);
                     #region 图文信息特殊处理
-                    if (model.MsgType == "news")
+                    if (model.MsgType == "6")
                     {
                         var titleStr = model.Title.Split(';');
                         var descriptionStr = model.Description.Split(';');

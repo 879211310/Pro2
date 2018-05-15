@@ -60,36 +60,36 @@ namespace MyProject.Task
                     }
                     else
                     {
-                        switch (reply.MsgType)
+                        switch (Convert.ToInt32(reply.MsgType))
                         {
-                            case "text":
+                            case (int)WeiXinMessageTypeEnum.text:
                                 result = ReplayPassiveMessageAPI.RepayText(openId, myUserName, reply.Content);
                                 break;
-                            case "image":
+                            case (int)WeiXinMessageTypeEnum.image:
                                 result = ReplayPassiveMessageAPI.ReplayImage(openId, myUserName, reply.MediaId); 
                                 break;
-                            case "video":
+                            case (int)WeiXinMessageTypeEnum.video:
                                 result = ReplayPassiveMessageAPI.ReplayVedio(openId, myUserName, reply.MediaId,reply.Title,reply.Description);
                                 break;
-                            case "voice":
+                            case (int)WeiXinMessageTypeEnum.voice:
                                 result = ReplayPassiveMessageAPI.ReplayVoice(openId, myUserName, reply.MediaId);
                                 break;
-                            case "music":
+                            case (int)WeiXinMessageTypeEnum.music:
                                 result = ReplayPassiveMessageAPI.ReplayMusic(openId, myUserName, reply.Title,reply.Description,reply.MusicURL,reply.HQMusicUrl,reply.ThumbMediaId);
                                 break;
-                            case "news":
+                            case (int)WeiXinMessageTypeEnum.news:
                                 var weiXinNewList =new List<WeixinNews>();
                                 var titles= reply.Title.Split(';');
                                 var descriptions= reply.Description.Split(';');
                                 var picurls= reply.PicUrl.Split(';');
                                 var urls= reply.Url.Split(';');
-                                for(int i=0;i<titles.Length;i++)
+                                for(int i=0;i<reply.ArticleCount;i++)
                                 {
                                      var weiXinNew = new WeixinNews
                                     {
                                         title = titles[i],
                                         description =descriptions[i],
-                                        picurl = domain+picurls[i],
+                                        picurl = picurls[i],
                                         url = urls[i]
                                     };
                                      weiXinNewList.Add(weiXinNew);

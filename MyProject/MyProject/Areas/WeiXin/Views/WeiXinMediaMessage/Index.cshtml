@@ -29,11 +29,9 @@
             {
                 $.ligerDialog.error('请选择一行')//弹窗
             }else
-            {
-                $.ligerDialog.confirm('确实要删除么？', function (yes) {
-                    if(yes){
-                        DeletePostBox("/weixin/WeiXinMediaMessage/Del?id="+selectRowId) 
-                    }});
+            { 
+                DeletePost("/weixin/WeiXinMediaMessage/Del?id="+selectRowId) ;
+                  
             } 
         } 
 
