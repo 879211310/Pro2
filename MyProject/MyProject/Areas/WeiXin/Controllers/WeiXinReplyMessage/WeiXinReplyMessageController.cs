@@ -100,11 +100,7 @@ namespace MyProject.Areas.WeiXin.Controllers.WeiXinReplyMessage
 
         [HttpPost]
         public ActionResult Save(WeiXinReplyMessageModel model)
-        {
-            if (string.IsNullOrEmpty(model.MediaId))
-            {
-                ModelState.AddModelError("MediaId", "请选择媒体id");
-            }
+        { 
             if (ModelState.IsValid)
             {
                 #region 图文信息特殊处理 

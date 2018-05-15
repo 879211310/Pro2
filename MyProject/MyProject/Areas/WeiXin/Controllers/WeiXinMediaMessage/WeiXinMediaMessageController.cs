@@ -100,7 +100,16 @@ namespace MyProject.Areas.WeiXin.Controllers.WeiXinMediaMessage
             {
                 if (media.IsForever == 1)
                 {
-                    result.errmsg = "临时素材无删除操作";
+                    if (media.CreateTime.AddDays(3) > DateTime.Now)
+                    {
+                        _message.DeleteById(Convert.ToInt32(id)); 
+                    }
+                    else
+                    {
+                        result.errcode ="-1";
+                        result.errmsg = "临时素材无删除操作,请过期后再删除本地数据库";
+                    }
+                    
                     return Json(result);
                 }
                 var textParas = new Dictionary<string, string>{ 
