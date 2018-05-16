@@ -126,6 +126,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\WeiXin\Controllers\Api\ApiController.cs" />
+    <Compile Include="Areas\WeiXin\Controllers\Api\XiaoApiController.cs" />
     <Compile Include="Areas\WeiXin\Controllers\WeiXinMediaMessage\WeiXinMediaMessageController.cs" />
     <Compile Include="Areas\WeiXin\Controllers\WeiXinReplyMessage\WeiXinReplyMessageController.cs" />
     <Compile Include="Areas\WeiXin\Controllers\WeiXinReceiveMessage\WeiXinReceiveMessageController.cs" />
@@ -165,6 +166,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\header.css" />
+    <Content Include="Content\images\Xiao_1280.jpg" />
     <Content Include="Content\images\right_box_card1.gif" />
     <Content Include="Content\images\tab_title_bg.gif" />
     <Content Include="Content\index.css" />
@@ -1046,7 +1048,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>36727</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:4454/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

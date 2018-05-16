@@ -1603,6 +1603,23 @@ namespace MyProject.Services.Utility
                             : HttpContext.Current.Request.ServerVariables["REMOTE_ADDR"];
             return ip;
         }
+        public static int GetTimeZ(DateTime time)
+        {
+            var start = TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1));
+            return (int)(time - start).TotalSeconds;
+        }
+
+        public static String CreateNoncestr(int length)
+        {
+            var chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            var res = "";
+            Random rd = new Random();
+            for (int i = 0; i < length; i++)
+            {
+                res += chars[rd.Next(chars.Length - 1)];
+            }
+            return res;
+        }
 
         public static string GetColorCode(string colorName)
         {

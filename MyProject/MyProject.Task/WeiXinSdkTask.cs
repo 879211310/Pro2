@@ -1,5 +1,6 @@
 ﻿using Deepleo.Weixin.SDK;
 using Deepleo.Weixin.SDK.Entities;
+using Deepleo.Weixin.SDK.JSSDK;
 using MyProject.Core.Entities;
 using MyProject.Core.Enum;
 using MyProject.Core.Enums;
@@ -441,6 +442,30 @@ namespace MyProject.Task
             }
             return token;
         }
+
+
+        /// <summary>
+        /// 获取accountToken并缓存1小时
+        /// </summary>
+        /// <returns></returns>
+        public string JsApiToken()
+        {
+            var token = "";
+            try
+            {
+                token = CacheHelper.Get("JsApiToken") as string;
+                if (string.IsNullOrEmpty(token))
+                {
+                    token = JSAPI.GetTickect(this.AccountToken()).ticket;
+                    CacheHelper.Set("JsApiToken", token, 60 * 60);//缓存一个小时 
+                }
+            }
+            catch (Exception e)
+            {
+                SysExceptionTask.AddException(e, "获取JsApiToken");
+            }
+            return token;
+        } 
          
     }
 }

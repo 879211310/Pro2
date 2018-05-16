@@ -60,6 +60,7 @@
     <Compile Include="WeiXinSdkTask.cs" />
     <Compile Include="WeiXinReplyMessageTask.cs" />
     <Compile Include="WeiXinReceiveMessageTask.cs" />
+    <Compile Include="XiaoWeiXinSdkTask.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MyProject.Core\MyProject.Core.csproj">
