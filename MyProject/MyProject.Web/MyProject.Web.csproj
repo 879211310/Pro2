@@ -39,6 +39,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Deepleo.Weixin.SDK, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\weixinSDK\weixinSDK-master\Deepleo.Web\bin\Deepleo.Weixin.SDK.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -152,6 +156,10 @@
     <Content Include="Views\WeiXinShare\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MyProject.Core\MyProject.Core.csproj">
+      <Project>{ccbb87d3-06a8-4675-b511-39ff4d21d527}</Project>
+      <Name>MyProject.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MyProject.Services\MyProject.Services.csproj">
       <Project>{61ba4f81-97a1-4a51-b88e-a3a9629f09aa}</Project>
       <Name>MyProject.Services</Name>
@@ -160,6 +168,9 @@
       <Project>{4d11bd71-374b-418f-9571-dc525440896b}</Project>
       <Name>MyProject.Task</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\WeiXinShare\JsSDKIndex.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

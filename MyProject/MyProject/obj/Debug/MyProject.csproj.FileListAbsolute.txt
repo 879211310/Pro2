@@ -126,7 +126,6 @@ F:\zl\Project\MyProject2\Pro2\MyProject\MyProject\bin\MyProject.Core.pdb
 F:\zl\Project\MyProject2\Pro2\MyProject\MyProject\bin\MyProject.Data.pdb
 F:\zl\Project\MyProject2\Pro2\MyProject\MyProject\bin\MyProject.Services.pdb
 F:\zl\Project\MyProject2\Pro2\MyProject\MyProject\bin\MyProject.Task.pdb
-F:\zl\Project\MyProject2\Pro2\MyProject\MyProject\bin\Deepleo.Weixin.SDK.pdb
 F:\zl\Project\MyProject2\Pro2\MyProject\MyProject\bin\EntityFramework.xml
 F:\zl\Project\MyProject2\Pro2\MyProject\MyProject\bin\Newtonsoft.Json.xml
 F:\zl\Project\MyProject2\Pro2\MyProject\MyProject\bin\System.Net.Http.Formatting.xml

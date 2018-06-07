@@ -18,8 +18,8 @@ namespace MyProject.Task
     /// </summary>
     public class XiaoWeiXinSdkTask
     {
-        public static string appID = "wx8bd614f33f27fee5";
-        public static string appsecret = "148565f5af1bf8ff7e04730a922bebc3";
+        public static string appID = "wx8f88be576c5d04ed";
+        public static string appsecret = "e094d445c87ad7f45d82e10325ff3697";
         public static string Token = "XiaoChengXulkgame";
         public static string domain = ResultHelper.GetBaseUrl();//域名
         private readonly WeiXinReceiveMessageTask _receiveMessage = new WeiXinReceiveMessageTask(); 

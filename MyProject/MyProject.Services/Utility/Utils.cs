@@ -10,6 +10,7 @@ using System.Text.RegularExpressions;
 using System.Runtime.InteropServices;
 using System.Web;
 using System.Web.UI;
+using System.Collections.Generic;
 
 namespace MyProject.Services.Utility
 {
@@ -1619,6 +1620,27 @@ namespace MyProject.Services.Utility
                 res += chars[rd.Next(chars.Length - 1)];
             }
             return res;
+        }
+
+        //数组转换为xml格式
+        public static string ArrayToXml(Dictionary<string, string> arr)
+        {
+            var xml = "<xml>";
+            foreach (KeyValuePair<string, string> pair in arr)
+            {
+                string key = pair.Key;
+                string val = pair.Value;
+                if (IsNumber(val))
+                {
+                    xml += "<" + key + ">" + val + "</" + key + ">";
+                }
+                else
+                {
+                    xml += "<" + key + "><![CDATA[" + val + "]]></" + key + ">";
+                }
+            }
+            xml += "</xml>";
+            return xml;
         }
 
         public static string GetColorCode(string colorName)

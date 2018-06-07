@@ -34,7 +34,6 @@ F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Task\bin\Debug\EmitMapper.dll
 F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Task\bin\Debug\MyProject.Core.pdb
 F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Task\bin\Debug\MyProject.Data.pdb
 F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Task\bin\Debug\MyProject.Services.pdb
-F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Task\bin\Debug\Deepleo.Weixin.SDK.pdb
 F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Task\obj\Debug\MyProject.Task.csprojResolveAssemblyReference.cache
 F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Task\obj\Debug\MyProject.Task.dll
 F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Task\obj\Debug\MyProject.Task.pdb

@@ -19,7 +19,7 @@ namespace MyProject.Controllers.Account
         #region 登录
         public ActionResult Index()
         {
-            var model = new LogOnModel();
+            var model = new LogOnModel(); 
             return View(model);
         }
 

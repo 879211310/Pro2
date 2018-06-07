@@ -10,6 +10,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
+using System.Web;
+using MyProject.Core.Dtos;
+using Newtonsoft.Json;
 
 namespace MyProject.Task
 {
@@ -465,7 +469,45 @@ namespace MyProject.Task
                 SysExceptionTask.AddException(e, "获取JsApiToken");
             }
             return token;
+        }
+
+        #region 授权获取用户信息 3个步骤
+        /// <summary>
+        /// 构造授权地址
+        /// </summary>
+        /// <returns></returns>
+        public string OauthUrl(string redirectUrl, string scope = "snsapi_userinfo")
+        {
+            return string.Format("https://open.weixin.qq.com/connect/oauth2/authorize?appid={0}&redirect_uri={1}&response_type=code&scope={2}&state=1#wechat_redirect", appID, redirectUrl, scope);
+        }
+
+        //通过code换取网页授权access_token
+        public OAuthDto GetAccessToken(string code, string appId, string appSecret)
+        {
+            var textParas = new Dictionary<string, string>{ 
+                {"appid",appId},
+                {"secret",appSecret},
+                {"code",code},
+                {"grant_type","authorization_code"}
+                
+             };
+            var tokenJs = WebUtils.DoGet("https://api.weixin.qq.com/sns/oauth2/access_token", textParas);
+            return JsonConvert.DeserializeObject<OAuthDto>(tokenJs);
+
+        }
+
+        //拉取用户信息
+        public OAuthUserInfoDto GetUserInfo(string accessToekn, string openId, string lang = "zh_CN")
+        {
+            var textParas = new Dictionary<string, string>{
+                {"access_token",accessToekn},
+                {"openid",openId}, 
+                {"lang","zh_CN"}
+                
+             };
+            var result = WebUtils.DoGet("https://api.weixin.qq.com/sns/userinfo", textParas, Encoding.UTF8);
+            return JsonConvert.DeserializeObject<OAuthUserInfoDto>(result);
         } 
-         
+        #endregion
     }
 }

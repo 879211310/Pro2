@@ -1,6 +1,10 @@
 F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Web\bin\MyProject.Web.dll
 F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Web\bin\MyProject.Web.pdb
+F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Web\bin\Deepleo.Weixin.SDK.dll
 F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Web\bin\Microsoft.Web.Infrastructure.dll
+F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Web\bin\MyProject.Core.dll
+F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Web\bin\MyProject.Services.dll
+F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Web\bin\MyProject.Task.dll
 F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Web\bin\Newtonsoft.Json.dll
 F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Web\bin\System.Net.Http.Formatting.dll
 F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Web\bin\System.Web.Helpers.dll
@@ -11,6 +15,12 @@ F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Web\bin\System.Web.Razor.dll
 F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Web\bin\System.Web.WebPages.Deployment.dll
 F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Web\bin\System.Web.WebPages.dll
 F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Web\bin\System.Web.WebPages.Razor.dll
+F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Web\bin\EmitMapper.dll
+F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Web\bin\MyProject.Data.dll
+F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Web\bin\MyProject.Core.pdb
+F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Web\bin\MyProject.Services.pdb
+F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Web\bin\MyProject.Task.pdb
+F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Web\bin\Deepleo.Weixin.SDK.pdb
 F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Web\bin\Newtonsoft.Json.xml
 F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Web\bin\System.Net.Http.Formatting.xml
 F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Web\bin\System.Web.Helpers.xml
@@ -21,6 +31,7 @@ F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Web\bin\System.Web.Razor.xml
 F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Web\bin\System.Web.WebPages.xml
 F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Web\bin\System.Web.WebPages.Deployment.xml
 F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Web\bin\System.Web.WebPages.Razor.xml
+F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Web\bin\MyProject.Data.pdb
 F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Web\bin\zh-Hans\System.Net.Http.Formatting.resources.dll
 F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Web\bin\zh-Hans\System.Web.Helpers.resources.dll
 F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Web\bin\zh-Hans\System.Web.Http.resources.dll
@@ -33,14 +44,3 @@ F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Web\bin\zh-Hans\System.Web.Web
 F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Web\obj\Debug\MyProject.Web.csprojResolveAssemblyReference.cache
 F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Web\obj\Debug\MyProject.Web.dll
 F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Web\obj\Debug\MyProject.Web.pdb
-F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Web\bin\MyProject.Services.dll
-F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Web\bin\MyProject.Task.dll
-F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Web\bin\EmitMapper.dll
-F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Web\bin\MyProject.Data.dll
-F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Web\bin\MyProject.Core.dll
-F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Web\bin\Deepleo.Weixin.SDK.dll
-F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Web\bin\MyProject.Services.pdb
-F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Web\bin\MyProject.Task.pdb
-F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Web\bin\MyProject.Data.pdb
-F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Web\bin\MyProject.Core.pdb
-F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Web\bin\Deepleo.Weixin.SDK.pdb

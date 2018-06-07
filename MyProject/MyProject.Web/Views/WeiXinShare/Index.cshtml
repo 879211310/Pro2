@@ -21,7 +21,7 @@
 		</a>
 	</div>
 	<ul class="rule">
-		<li><span>1</span><p>活动时间：即日起至5月31日。</p></li>
+		<li><span>1</span><p>活动时间：即日起至5月31日。@(ViewBag.WxNickName)</p></li>
 		<li><span>2</span><p>每日首次登陆游戏后,即可获得一次幸运大转盘抽奖机会。</p></li>
 		<li><span>3</span><p>中奖之后，奖励将自动发送至微信绑定的游戏账户。</p></li>
 		<li><span>4</span><p>奖品说明：金币用于金币场和比赛；小豆用于组局和比赛。</p></li>
@@ -40,7 +40,7 @@
        $(document).ready(function () {
            $.get("/ApiWeb/JsApiConfig?debug=true&url=" + escape(location.href.split('#')[0]) + "&roll=" + roll(), function (res) {
                wx.config(res);
-           });
+           }); 
        });
        wx.ready(function () {
            f_onMenuShareTimeline();
