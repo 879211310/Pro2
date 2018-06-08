@@ -7,7 +7,7 @@ using MyProject.Services.Mappers;
 using MyProject.Task;
 using System;
 
-namespace MyProject.Controllers.Home
+namespace MyProject.Matrix.Controllers.Home
 {
     public class HomeController : BaseController
     { 
