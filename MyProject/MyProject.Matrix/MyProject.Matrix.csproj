@@ -122,13 +122,103 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\Core\ExceptionLogAttrbute.cs" />
+    <Compile Include="Controllers\Core\ExtendMvcHtml.cs" />
+    <Compile Include="Controllers\Core\SupportFilterAttribute.cs" />
     <Compile Include="Controllers\Home\HomeController.cs" />
+    <Compile Include="Controllers\SysManage\SysManageController.cs" />
+    <Compile Include="Controllers\SysManage\ViewModels\MenuModel.cs" />
+    <Compile Include="Controllers\SysManage\ViewModels\PowerModel.cs" />
+    <Compile Include="Controllers\SysManage\ViewModels\RoleMenuModel.cs" />
+    <Compile Include="Controllers\SysManage\ViewModels\RolePowerModel.cs" />
+    <Compile Include="Controllers\SysManage\ViewModels\SaveMenuModel.cs" />
+    <Compile Include="Controllers\SysManage\ViewModels\SavePowerModel.cs" />
+    <Compile Include="Controllers\SysManage\ViewModels\SaveUserRoleModel.cs" />
+    <Compile Include="Controllers\SysManage\ViewModels\UserRoleModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Matrix_Admin\css\bootstrap-responsive.min.css" />
+    <Content Include="Content\Matrix_Admin\css\bootstrap-wysihtml5.css" />
+    <Content Include="Content\Matrix_Admin\css\bootstrap.min.css" />
+    <Content Include="Content\Matrix_Admin\css\colorpicker.css" />
+    <Content Include="Content\Matrix_Admin\css\datepicker.css" />
+    <Content Include="Content\Matrix_Admin\css\fullcalendar.css" />
+    <Content Include="Content\Matrix_Admin\css\jquery.gritter.css" />
+    <Content Include="Content\Matrix_Admin\css\matrix-login.css" />
+    <Content Include="Content\Matrix_Admin\css\matrix-media.css" />
+    <Content Include="Content\Matrix_Admin\css\matrix-style.css" />
+    <Content Include="Content\Matrix_Admin\css\select2.css" />
+    <Content Include="Content\Matrix_Admin\css\uniform.css" />
+    <Content Include="Content\Matrix_Admin\font-awesome\css\font-awesome.css" />
+    <Content Include="Content\Matrix_Admin\images\backgrounds\calActiveBg.html" />
+    <Content Include="Content\Matrix_Admin\images\gallery\imgbox3.html" />
+    <Content Include="Content\Matrix_Admin\img\alpha.html" />
+    <Content Include="Content\Matrix_Admin\img\breadcrumb.png" />
+    <Content Include="Content\Matrix_Admin\img\demo\av1.jpg" />
+    <Content Include="Content\Matrix_Admin\img\demo\av2.jpg" />
+    <Content Include="Content\Matrix_Admin\img\demo\av3.jpg" />
+    <Content Include="Content\Matrix_Admin\img\demo\av4.jpg" />
+    <Content Include="Content\Matrix_Admin\img\demo\av5.jpg" />
+    <Content Include="Content\Matrix_Admin\img\demo\demo-image1.jpg" />
+    <Content Include="Content\Matrix_Admin\img\demo\demo-image2.jpg" />
+    <Content Include="Content\Matrix_Admin\img\demo\demo-image3.jpg" />
+    <Content Include="Content\Matrix_Admin\img\demo\envelope.png" />
+    <Content Include="Content\Matrix_Admin\img\gallery\imgbox1.jpg" />
+    <Content Include="Content\Matrix_Admin\img\gallery\imgbox2.jpg" />
+    <Content Include="Content\Matrix_Admin\img\gallery\imgbox3.jpg" />
+    <Content Include="Content\Matrix_Admin\img\gallery\imgbox4.jpg" />
+    <Content Include="Content\Matrix_Admin\img\gallery\imgbox5.jpg" />
+    <Content Include="Content\Matrix_Admin\img\glyphicons-halflings-white.png" />
+    <Content Include="Content\Matrix_Admin\img\glyphicons-halflings.html" />
+    <Content Include="Content\Matrix_Admin\img\gritter.png" />
+    <Content Include="Content\Matrix_Admin\img\hue.png" />
+    <Content Include="Content\Matrix_Admin\img\larrow.png" />
+    <Content Include="Content\Matrix_Admin\img\line.png" />
+    <Content Include="Content\Matrix_Admin\img\logo.png" />
+    <Content Include="Content\Matrix_Admin\img\menu-active.png" />
+    <Content Include="Content\Matrix_Admin\img\rarrow.png" />
+    <Content Include="Content\Matrix_Admin\img\saturation.png" />
+    <Content Include="Content\Matrix_Admin\img\select2.png" />
+    <Content Include="Content\Matrix_Admin\img\spinner.gif" />
+    <Content Include="Content\Matrix_Admin\img\sprite.png" />
+    <Content Include="Content\Matrix_Admin\js\bootstrap-colorpicker.js" />
+    <Content Include="Content\Matrix_Admin\js\bootstrap-datepicker.js" />
+    <Content Include="Content\Matrix_Admin\js\bootstrap-wysihtml5.js" />
+    <Content Include="Content\Matrix_Admin\js\bootstrap.min.js" />
+    <Content Include="Content\Matrix_Admin\js\excanvas.min.js" />
+    <Content Include="Content\Matrix_Admin\js\fullcalendar.min.js" />
+    <Content Include="Content\Matrix_Admin\js\jquery.dataTables.min.js" />
+    <Content Include="Content\Matrix_Admin\js\jquery.flot.min.js" />
+    <Content Include="Content\Matrix_Admin\js\jquery.flot.pie.min.js" />
+    <Content Include="Content\Matrix_Admin\js\jquery.flot.resize.min.js" />
+    <Content Include="Content\Matrix_Admin\js\jquery.gritter.min.js" />
+    <Content Include="Content\Matrix_Admin\js\jquery.min.js" />
+    <Content Include="Content\Matrix_Admin\js\jquery.peity.min.js" />
+    <Content Include="Content\Matrix_Admin\js\jquery.toggle.buttons.html" />
+    <Content Include="Content\Matrix_Admin\js\jquery.ui.custom.js" />
+    <Content Include="Content\Matrix_Admin\js\jquery.uniform.js" />
+    <Content Include="Content\Matrix_Admin\js\jquery.validate.js" />
+    <Content Include="Content\Matrix_Admin\js\jquery.wizard.js" />
+    <Content Include="Content\Matrix_Admin\js\maruti.html" />
+    <Content Include="Content\Matrix_Admin\js\masked.js" />
+    <Content Include="Content\Matrix_Admin\js\matrix.calendar.js" />
+    <Content Include="Content\Matrix_Admin\js\matrix.charts.js" />
+    <Content Include="Content\Matrix_Admin\js\matrix.chat.js" />
+    <Content Include="Content\Matrix_Admin\js\matrix.dashboard.js" />
+    <Content Include="Content\Matrix_Admin\js\matrix.form_common.js" />
+    <Content Include="Content\Matrix_Admin\js\matrix.form_validation.js" />
+    <Content Include="Content\Matrix_Admin\js\matrix.interface.js" />
+    <Content Include="Content\Matrix_Admin\js\matrix.js" />
+    <Content Include="Content\Matrix_Admin\js\matrix.login.js" />
+    <Content Include="Content\Matrix_Admin\js\matrix.popover.js" />
+    <Content Include="Content\Matrix_Admin\js\matrix.tables.js" />
+    <Content Include="Content\Matrix_Admin\js\matrix.wizard.js" />
+    <Content Include="Content\Matrix_Admin\js\select2.min.js" />
+    <Content Include="Content\Matrix_Admin\js\wysihtml5-0.3.0.js" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -185,6 +275,18 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\Matrix_Admin\font-awesome\css\Descr.WD3" />
+    <Content Include="Content\Matrix_Admin\font-awesome\font\Descr.WD3" />
+    <Content Include="Content\Matrix_Admin\font-awesome\font\fontawesome-webfont.eot" />
+    <Content Include="Content\Matrix_Admin\font-awesome\font\fontawesome-webfont.eot%40" />
+    <Content Include="Content\Matrix_Admin\font-awesome\font\fontawesome-webfont.ttf" />
+    <Content Include="Content\Matrix_Admin\font-awesome\font\fontawesome-webfont.woff" />
+    <Content Include="Content\Matrix_Admin\images\backgrounds\blank2" />
+    <Content Include="Content\Matrix_Admin\images\backgrounds\Descr.WD3" />
+    <Content Include="Content\Matrix_Admin\images\backgrounds\skype_3Asuniljoshi19%40call" />
+    <Content Include="Content\Matrix_Admin\img\demo\Descr.WD3" />
+    <Content Include="Content\Matrix_Admin\img\Descr.WD3" />
+    <Content Include="Content\Matrix_Admin\img\gallery\Descr.WD3" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
@@ -219,6 +321,20 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MyProject.Core\MyProject.Core.csproj">
+      <Project>{ccbb87d3-06a8-4675-b511-39ff4d21d527}</Project>
+      <Name>MyProject.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MyProject.Services\MyProject.Services.csproj">
+      <Project>{61ba4f81-97a1-4a51-b88e-a3a9629f09aa}</Project>
+      <Name>MyProject.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MyProject.Task\MyProject.Task.csproj">
+      <Project>{4d11bd71-374b-418f-9571-dc525440896b}</Project>
+      <Name>MyProject.Task</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
