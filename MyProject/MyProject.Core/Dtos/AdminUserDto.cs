@@ -23,5 +23,10 @@ namespace MyProject.Core.Dtos
         /// 角色名称
         /// </summary>
         public string RoleName { get; set; }
+
+        /// <summary>
+        /// email
+        /// </summary>
+        public string Email { get; set; }
     }
 }

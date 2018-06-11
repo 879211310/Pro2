@@ -33,7 +33,10 @@ namespace MyProject.Core.Entities
 		/// 
 		/// </summary>
 		public int RoleId{ get;set;}
-		
 
+        /// <summary>
+        /// email
+        /// </summary>
+        public string Email { get; set; }
 	}
 }

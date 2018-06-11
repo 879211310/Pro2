@@ -1,0 +1,1 @@
+alter talbe dbo.AdminUser add Email nvarchar(50) --½¨×Ö¶Î

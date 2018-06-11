@@ -3,6 +3,7 @@ using MyProject.Core.Entities;
 using MyProject.Tasks;
 using MyProject.Core.Dtos;
 using System.Collections.Generic;
+using System.Web;
 
 namespace MyProject.Matrix.Controllers
 {
@@ -43,9 +44,10 @@ namespace MyProject.Matrix.Controllers
         /// 获得当前用户信息
         /// </summary>
         /// <returns></returns>
-        public AccountDto GetCurrentAdmin()
+        public string  GetCurrentAdmin()
         {
-            return Session["Account"] as AccountDto; 
+            HttpCookie cookie = Request.Cookies["Account"];
+            return cookie.Value;
         }
 
         /// <summary>
