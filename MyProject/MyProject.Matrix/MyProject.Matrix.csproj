@@ -181,7 +181,6 @@
     <Content Include="Content\Matrix_Admin\img\larrow.png" />
     <Content Include="Content\Matrix_Admin\img\line.png" />
     <Content Include="Content\Matrix_Admin\img\logo.png" />
-    <Content Include="Content\Matrix_Admin\img\logo1.png" />
     <Content Include="Content\Matrix_Admin\img\menu-active.png" />
     <Content Include="Content\Matrix_Admin\img\rarrow.png" />
     <Content Include="Content\Matrix_Admin\img\saturation.png" />
@@ -319,6 +318,8 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\LogInIndex.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Menu.cshtml" />
+    <Content Include="Views\Home\FirstIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -25,7 +25,7 @@ namespace MyProject.Matrix.Controllers.Home
         {
             if (GetCurrentAdmin() == null)
             {
-                return Redirect("/account/index");
+                return Redirect("/Home/LogInIndex");
             }
             ViewBag.account = GetCurrentAdmin();
             var userPassword = _adminUserTask.GetByUserName(GetCurrentAdmin());
@@ -80,7 +80,7 @@ namespace MyProject.Matrix.Controllers.Home
                 } 
 
                 HttpCookie cookie = new HttpCookie("Account", userPassword.UserName); 
-                cookie.Expires = DateTime.Now.AddMinutes(2);  
+                cookie.Expires = DateTime.Now.AddMinutes(60);  
                 Response.Cookies.Add(cookie);
 
                 SysLogTask.AddLog(new MyProject.Core.Entities.SysLogDto() { Message = "", Module = LogModuleEnum.Land, Type = LogTypeEnum.Land, Operator = userPassword.UserName, Result = "登陆成功" });
@@ -93,8 +93,10 @@ namespace MyProject.Matrix.Controllers.Home
         #region 退出
         public ActionResult LogOut()
         {
-            Session["Account"] = "";
-            return RedirectToAction("Index", "Account");
+            HttpCookie cookie = new HttpCookie("Account", ""); 
+            cookie.Expires = DateTime.Now.AddDays(-1); 
+            Response.Cookies.Add(cookie); 
+            return RedirectToAction("LogInIndex", "Home");
         }
         #endregion
 

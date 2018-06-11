@@ -1,0 +1,39 @@
+﻿@{
+    Layout = null;
+    var i = 0;
+}
+@model List<MyProject.Matrix.Controllers.SysManage.ViewModels.MenuModel>
+<ul> 
+    @foreach (var item in Model.Where(c => c.ParentId == 0))
+    { 
+        var activeHtml="";
+        if (i ==0)
+        {
+            activeHtml = "<li class='active'>";
+        }else
+        {
+            activeHtml = "<li>";
+        }
+        var childs = Model.Where(c => c.ParentId == item.MenuId);
+        var childsHtml = "";
+        var UrlHtml="#";
+        if (childs.Count() > 0)
+        {
+            childsHtml = " <span class='label label-important'>></span>";
+            activeHtml = "<li class='submenu'>";
+        }
+        else
+        {
+            UrlHtml = @item.LinkUrl;
+        }
+       @Html.Raw(activeHtml)<a href="@UrlHtml"><i class="icon icon-home"></i> <span>@item.MenuName</span>@Html.Raw(childsHtml)</a> 
+            <ul>
+                @foreach (var child in Model.Where(c => c.ParentId == item.MenuId))
+                { 
+                     <li><a href="@child.LinkUrl">@child.MenuName</a></li>
+                }
+            </ul>
+        @Html.Raw("</li>")
+        i++;
+    }
+</ul>
