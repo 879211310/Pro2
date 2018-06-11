@@ -122,10 +122,12 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\Core\ExceptionLogAttrbute.cs" />
     <Compile Include="Controllers\Core\ExtendMvcHtml.cs" />
     <Compile Include="Controllers\Core\SupportFilterAttribute.cs" />
     <Compile Include="Controllers\Home\HomeController.cs" />
+    <Compile Include="Controllers\Home\ViewModels\LogOnModel.cs" />
     <Compile Include="Controllers\SysManage\SysManageController.cs" />
     <Compile Include="Controllers\SysManage\ViewModels\MenuModel.cs" />
     <Compile Include="Controllers\SysManage\ViewModels\PowerModel.cs" />
@@ -179,6 +181,7 @@
     <Content Include="Content\Matrix_Admin\img\larrow.png" />
     <Content Include="Content\Matrix_Admin\img\line.png" />
     <Content Include="Content\Matrix_Admin\img\logo.png" />
+    <Content Include="Content\Matrix_Admin\img\logo1.png" />
     <Content Include="Content\Matrix_Admin\img\menu-active.png" />
     <Content Include="Content\Matrix_Admin\img\rarrow.png" />
     <Content Include="Content\Matrix_Admin\img\saturation.png" />
@@ -314,6 +317,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\LogInIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
