@@ -47,6 +47,10 @@ namespace MyProject.Matrix.Controllers
         public string  GetCurrentAdmin()
         {
             HttpCookie cookie = Request.Cookies["Account"];
+            if (cookie == null)
+            {
+                return null;
+            }
             return cookie.Value;
         }
 

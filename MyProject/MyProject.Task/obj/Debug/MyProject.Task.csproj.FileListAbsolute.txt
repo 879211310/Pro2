@@ -37,3 +37,15 @@ F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Task\bin\Debug\MyProject.Servi
 F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Task\obj\Debug\MyProject.Task.csprojResolveAssemblyReference.cache
 F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Task\obj\Debug\MyProject.Task.dll
 F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Task\obj\Debug\MyProject.Task.pdb
+E:\U盘\17Pro\Pro2\MyProject\MyProject.Task\bin\Debug\MyProject.Task.dll
+E:\U盘\17Pro\Pro2\MyProject\MyProject.Task\bin\Debug\MyProject.Task.pdb
+E:\U盘\17Pro\Pro2\MyProject\MyProject.Task\bin\Debug\MyProject.Core.dll
+E:\U盘\17Pro\Pro2\MyProject\MyProject.Task\bin\Debug\MyProject.Data.dll
+E:\U盘\17Pro\Pro2\MyProject\MyProject.Task\bin\Debug\MyProject.Services.dll
+E:\U盘\17Pro\Pro2\MyProject\MyProject.Task\bin\Debug\EmitMapper.dll
+E:\U盘\17Pro\Pro2\MyProject\MyProject.Task\bin\Debug\MyProject.Core.pdb
+E:\U盘\17Pro\Pro2\MyProject\MyProject.Task\bin\Debug\MyProject.Data.pdb
+E:\U盘\17Pro\Pro2\MyProject\MyProject.Task\bin\Debug\MyProject.Services.pdb
+E:\U盘\17Pro\Pro2\MyProject\MyProject.Task\obj\Debug\MyProject.Task.csprojResolveAssemblyReference.cache
+E:\U盘\17Pro\Pro2\MyProject\MyProject.Task\obj\Debug\MyProject.Task.dll
+E:\U盘\17Pro\Pro2\MyProject\MyProject.Task\obj\Debug\MyProject.Task.pdb

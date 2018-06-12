@@ -12,3 +12,8 @@ F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Services\bin\Debug\MyProject.S
 F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Services\obj\Debug\MyProject.Services.csprojResolveAssemblyReference.cache
 F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Services\obj\Debug\MyProject.Services.dll
 F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Services\obj\Debug\MyProject.Services.pdb
+E:\U盘\17Pro\Pro2\MyProject\MyProject.Services\bin\Debug\MyProject.Services.dll
+E:\U盘\17Pro\Pro2\MyProject\MyProject.Services\bin\Debug\MyProject.Services.pdb
+E:\U盘\17Pro\Pro2\MyProject\MyProject.Services\obj\Debug\MyProject.Services.csprojResolveAssemblyReference.cache
+E:\U盘\17Pro\Pro2\MyProject\MyProject.Services\obj\Debug\MyProject.Services.dll
+E:\U盘\17Pro\Pro2\MyProject\MyProject.Services\obj\Debug\MyProject.Services.pdb
