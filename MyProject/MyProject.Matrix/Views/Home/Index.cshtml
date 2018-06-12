@@ -10,12 +10,9 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="stylesheet" href="/Content/Matrix_Admin/css/bootstrap.min.css" />
-<link rel="stylesheet" href="/Content/Matrix_Admin/css/bootstrap-responsive.min.css" />
-<link rel="stylesheet" href="/Content/Matrix_Admin/css/fullcalendar.css" />
+<link rel="stylesheet" href="/Content/Matrix_Admin/css/bootstrap-responsive.min.css" /> 
 <link rel="stylesheet" href="/Content/Matrix_Admin/css/matrix-style.css" />
-<link rel="stylesheet" href="/Content/Matrix_Admin/css/matrix-media.css" />
-<link href="/Content/Matrix_Admin/font-awesome/css/font-awesome.css" rel="stylesheet" />
-<link rel="stylesheet" href="/Content/Matrix_Admin/css/jquery.gritter.css" />
+<link rel="stylesheet" href="/Content/Matrix_Admin/css/matrix-media.css" /> 
 
 </head>
 <body>
@@ -36,7 +33,7 @@
 <!--close-top-Header-menu-->
  
 <!--sidebar-menu-->
-<div id="sidebar">
+<div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-inbox"></i> 菜单</a>
    @Html.Action("Menu", "Home") 
 </div>
 <!--sidebar-menu-->
@@ -45,10 +42,23 @@
 <div id="content">
 <!--breadcrumbs-->
   <div id="content-header">
-    <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a></div>
+    <div id="breadcrumb"> <a hre="/Home/FirstIndex" title="Go to Home" class="tip-bottom"><i class="icon-home"></i><span>首页</span></a></div>
   </div>
 <!--End-breadcrumbs-->
-
+     
+    <div class="widget-box" style="margin-top:0px;">
+          <div class="widget-title">
+            <ul class="nav nav-tabs" id="tabHead">
+              <li class="active"><a data-toggle="tab" href="#0" >首页</a></li> 
+            </ul>
+          </div>
+          <div class="widget-content tab-content" id="tabContent">
+            <div id="#0" class="tab-pane active">
+               <iframe frameborder="0" name="0" id="x" src="/Home/LoginIndex"></iframe> 
+            </div>
+            
+          </div>
+        </div>
 <!--Action boxes-->
   
 </div>
@@ -62,52 +72,60 @@
 </div>
 
 <!--end-Footer-part-->
-
-<script src="/Content/Matrix_Admin/js/excanvas.min.js"></script> 
+     
 <script src="/Content/Matrix_Admin/js/jquery.min.js"></script> 
 <script src="/Content/Matrix_Admin/js/jquery.ui.custom.js"></script> 
-<script src="/Content/Matrix_Admin/js/bootstrap.min.js"></script> 
-<script src="/Content/Matrix_Admin/js/jquery.flot.min.js"></script> 
-<script src="/Content/Matrix_Admin/js/jquery.flot.resize.min.js"></script> 
-<script src="/Content/Matrix_Admin/js/jquery.peity.min.js"></script> 
-<script src="/Content/Matrix_Admin/js/fullcalendar.min.js"></script> 
-<script src="/Content/Matrix_Admin/js/matrix.js"></script> 
-<script src="/Content/Matrix_Admin/js/matrix.dashboard.js"></script> 
-<script src="/Content/Matrix_Admin/js/jquery.gritter.min.js"></script> 
-<script src="/Content/Matrix_Admin/js/matrix.interface.js"></script> 
-<script src="/Content/Matrix_Admin/js/matrix.chat.js"></script> 
-<script src="/Content/Matrix_Admin/js/jquery.validate.js"></script> 
-<script src="/Content/Matrix_Admin/js/matrix.form_validation.js"></script> 
-<script src="/Content/Matrix_Admin/js/jquery.wizard.js"></script> 
-<script src="/Content/Matrix_Admin/js/jquery.uniform.js"></script> 
-<script src="/Content/Matrix_Admin/js/select2.min.js"></script> 
-<script src="/Content/Matrix_Admin/js/matrix.popover.js"></script> 
-<script src="/Content/Matrix_Admin/js/jquery.dataTables.min.js"></script> 
-<script src="/Content/Matrix_Admin/js/matrix.tables.js"></script> 
-
+<script src="/Content/Matrix_Admin/js/bootstrap.min.js"></script>  
+<script src="/Content/Matrix_Admin/js/matrix.js"></script>   
+<script src="/Content/Matrix_Admin/js/jquery.uniform.js"></script>  
 <script type="text/javascript">
-  // This function is called from the pop-up menus to transfer to
-  // a different page. Ignore if the value returned is a null string:
-  function goPage (newURL) {
+    $(function () { 
+        $("[hre]").click(function () { 
+            var hre = $(this).attr("hre");
+            var name = $(this).find("span").html();
+            var menuId = $(this).attr("id");
+            $("#tabHead li").removeClass();
+            $("#tabContent div").removeClass(); 
+            $("#tabContent div").addClass("tab-pane");
+            var isAdd = 1;
+            $("#tabHead a").each(function () { 
+                var id = $(this).attr("href"); 
+                if ("#"+menuId == id) {
+                    $(this).parent().addClass("active");
+                    $("#tabContent div").each(function () {
+                        var conId = $(this).attr("id"); 
+                        if (conId == id) { 
+                            $(this).removeClass();
+                            $(this).addClass("tab-pane active"); 
+                        }
+                    }); 
+                   
+                    isAdd = 0;
+                    
+                } 
+            });  
+            if (isAdd == 1) { 
+                $("#tabHead").append(" <li class='active'><a data-toggle='tab' href='#" + menuId + "'>" + name + "</a></li> ");
+                $("#tabContent").append("<div id='#" + menuId + "' class='tab-pane active'><iframe frameborder='0' name='0'  src='" + hre + "'></iframe></div>");
+            
+            } 
+            
+        });
 
-      // if url is empty, skip the menu dividers and reset the menu selection to default
-      if (newURL != "") {
-      
-          // if url is "-", it is this page -- reset the menu:
-          if (newURL == "-" ) {
-              resetMenu();            
-          } 
-          // else, send page to designated URL            
-          else {  
-            document.location.href = newURL;
-          }
-      }
-  }
-
-// resets the menu selection upon entry to this page:
-function resetMenu() {
-   document.gomenu.selector.selectedIndex = 2;
-}
+        $("#tabHead a").click(function () {
+            $("#tabContent div").removeClass();
+            $("#tabContent div").addClass("tab-pane"); 
+                var id = $(this).attr("href"); 
+                    $(this).parent().addClass("active");
+                    $("#tabContent div").each(function () {
+                        var conId = $(this).attr("id");
+                        if (conId == id) {
+                            $(this).removeClass();
+                            $(this).addClass("tab-pane active");
+                        }
+                    }); 
+        });
+    });
 </script>
 </body>
 </html>
