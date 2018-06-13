@@ -1,0 +1,31 @@
+﻿@{
+    Layout = null;
+    var permList = ViewBag.perm as List<MyProject.Core.Dtos.PermDto>;
+    if (permList == null)
+    {
+        permList = new List<MyProject.Core.Dtos.PermDto>();
+    }
+}
+@using MyProject.Matrix.Controllers.Core;
+@model List<MyProject.Matrix.Controllers.SysManage.ViewModels.MenuModel>
+
+<!DOCTYPE html>
+
+<html>
+<head> 
+    <title>FirstIndex</title>
+    <link href="~/Content/Matrix_Admin/css/bootstrap-3.3.4.css" rel="stylesheet" />  
+    <script src="/Content/Matrix_Admin/js/jquery.min.js"></script>  
+    <script src="~/Content/Matrix_Admin/js/bootstrap-treeview.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#tree').treeview({ data:@Html.Raw(ViewData["treeList"]) });
+        });
+    </script>
+</head>
+<body style="background-color:#F9F9F9;">
+  <div id="tree"></div>
+</body>
+</html>
+
+ 

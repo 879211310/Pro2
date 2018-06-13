@@ -72,8 +72,13 @@ namespace MyProject.Matrix.Controllers.Core
 
             //URL路径
             string filePath = HttpContext.Current.Request.FilePath;
-            AccountDto account = filterContext.HttpContext.Session["Account"] as AccountDto;
-            if (ValiddatePermission(account, controller, action, filePath))
+            HttpCookie cookie = filterContext.HttpContext.Request.Cookies["Account"];
+            if (cookie == null)
+            {
+                HttpContext.Current.Response.Redirect("/Home/LogInIndex");
+                return ;
+            }
+            if (ValiddatePermission(cookie.Value, controller, action, filePath))
             {
                 return;
             }
@@ -84,7 +89,7 @@ namespace MyProject.Matrix.Controllers.Core
                 return;
             }
         }
-        public bool ValiddatePermission(AccountDto account, string controller, string action, string filePath)
+        public bool ValiddatePermission(string  account, string controller, string action, string filePath)
         {
             bool bResult = false;
             string actionName = string.IsNullOrEmpty(ActionName) ? action : ActionName;
@@ -100,7 +105,8 @@ namespace MyProject.Matrix.Controllers.Core
                 perm = (List<PermDto>)HttpContext.Current.Session[filePath];
                 if (perm == null)
                 {
-                    perm = _powersTask.GetPermList(account.RoleId, controller); //获取当前用户的权限列表
+                    var user = _adminUserTask.GetByUserName(account);
+                    perm = _powersTask.GetPermList(user.RoleId, controller); //获取当前用户的权限列表
                     HttpContext.Current.Session[filePath] = perm;//获取的劝降放入会话由Controller调用 
                 }
                 //当用户访问index时，只要权限>0就可以访问
