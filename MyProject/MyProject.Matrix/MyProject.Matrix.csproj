@@ -191,6 +191,7 @@
     <Content Include="Content\Matrix_Admin\js\bootstrap-datepicker.js" />
     <Content Include="Content\Matrix_Admin\js\bootstrap-wysihtml5.js" />
     <Content Include="Content\Matrix_Admin\js\bootstrap.min.js" />
+    <Content Include="Content\Matrix_Admin\js\BootstrapMenu.min.js" />
     <Content Include="Content\Matrix_Admin\js\excanvas.min.js" />
     <Content Include="Content\Matrix_Admin\js\fullcalendar.min.js" />
     <Content Include="Content\Matrix_Admin\js\jquery.dataTables.min.js" />

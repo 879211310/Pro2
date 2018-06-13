@@ -77,9 +77,11 @@
 <script src="/Content/Matrix_Admin/js/jquery.ui.custom.js"></script> 
 <script src="/Content/Matrix_Admin/js/bootstrap.min.js"></script>  
 <script src="/Content/Matrix_Admin/js/matrix.js"></script>   
-<script src="/Content/Matrix_Admin/js/jquery.uniform.js"></script>  
+<script src="/Content/Matrix_Admin/js/jquery.uniform.js"></script> 
+<script src="~/Content/Matrix_Admin/js/BootstrapMenu.min.js"></script>@*右键菜单js*@
 <script type="text/javascript">
-    $(function () { 
+    $(function () {
+        //点击菜单 切换tab
         $("[hre]").click(function () { 
             var hre = $(this).attr("hre");
             var name = $(this).find("span").html();
@@ -90,13 +92,12 @@
             var isAdd = 1;
             $("#tabHead a").each(function () { 
                 var id = $(this).attr("href"); 
-                if ("#"+menuId == id) {
-                    $(this).parent().addClass("active");
+                if ("#"+menuId == id) {//如果已经有tab就打开tab
+                    $(this).parent().addClass("active");//打开tab
                     $("#tabContent div").each(function () {
                         var conId = $(this).attr("id"); 
-                        if (conId == id) { 
-                            $(this).removeClass();
-                            $(this).addClass("tab-pane active"); 
+                        if (conId == id) {  
+                            $(this).addClass("tab-pane active"); //打开tab对应的页面
                         }
                     }); 
                    
@@ -104,7 +105,7 @@
                     
                 } 
             });  
-            if (isAdd == 1) { 
+            if (isAdd == 1) { //没有tab就新建tab
                 $("#tabHead").append(" <li class='active'><a data-toggle='tab' href='#" + menuId + "'>" + name + "</a></li> ");
                 $("#tabContent").append("<div id='#" + menuId + "' class='tab-pane active'><iframe frameborder='0' name='0'  src='" + hre + "'></iframe></div>");
             
@@ -112,19 +113,47 @@
             
         });
 
-        $("#tabHead a").click(function () {
+        //切换tab
+        $("#tabHead a").live("click",function () {//live(),拿到jq添加上去的元素
             $("#tabContent div").removeClass();
             $("#tabContent div").addClass("tab-pane"); 
                 var id = $(this).attr("href"); 
-                    $(this).parent().addClass("active");
+                $(this).parent().addClass("active");//打开tab
                     $("#tabContent div").each(function () {
-                        var conId = $(this).attr("id");
+                        var conId = $(this).attr("id"); 
                         if (conId == id) {
                             $(this).removeClass();
-                            $(this).addClass("tab-pane active");
+                            $(this).addClass("tab-pane active");//打开tab对应的页面
                         }
                     }); 
-        });
+        }); 
+
+    });
+
+    var menu = new BootstrapMenu('#tabHead', {
+        actions: [{
+            name: '删除',
+            onClick: function () {  
+                $("#tabHead li").each(function () {
+                    var thisHead = $(this);
+                    var clas = thisHead.attr("class");
+                    var id = thisHead.children().attr("href");
+                    if (clas == "active") { 
+                        $("#tabContent div").each(function () {
+                            var conId = $(this).attr("id");
+                            if (conId == id) {
+                                thisHead.prev().addClass("active");
+                                thisHead.remove(); 
+                                $(this).prev().addClass("tab-pane active"); //打开tab对应的页面 
+                                $(this).remove();
+                            }
+                        });
+                    }
+                       
+                    });
+                
+            }
+        }]
     });
 </script>
 </body>
