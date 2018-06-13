@@ -143,6 +143,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Matrix_Admin\css\bootstrap-3.3.4.css" />
     <Content Include="Content\Matrix_Admin\css\bootstrap-responsive.min.css" />
     <Content Include="Content\Matrix_Admin\css\bootstrap-wysihtml5.css" />
     <Content Include="Content\Matrix_Admin\css\bootstrap.min.css" />
@@ -189,6 +190,7 @@
     <Content Include="Content\Matrix_Admin\img\sprite.png" />
     <Content Include="Content\Matrix_Admin\js\bootstrap-colorpicker.js" />
     <Content Include="Content\Matrix_Admin\js\bootstrap-datepicker.js" />
+    <Content Include="Content\Matrix_Admin\js\bootstrap-treeview.js" />
     <Content Include="Content\Matrix_Admin\js\bootstrap-wysihtml5.js" />
     <Content Include="Content\Matrix_Admin\js\bootstrap.min.js" />
     <Content Include="Content\Matrix_Admin\js\BootstrapMenu.min.js" />
@@ -321,6 +323,11 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Menu.cshtml" />
     <Content Include="Views\Home\FirstIndex.cshtml" />
+    <Content Include="Views\SysManage\MenuList.cshtml" />
+    <Content Include="Views\SysManage\RoleList.cshtml" />
+    <Content Include="Views\SysManage\SaveMenu.cshtml" />
+    <Content Include="Views\SysManage\SavePower.cshtml" />
+    <Content Include="Views\SysManage\SaveRole.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -9,6 +9,7 @@ using MyProject.Services.Extensions;
 using MyProject.Services.Mappers;
 using MyProject.Services.MvcPager;
 using MyProject.Matrix.Controllers.Core;
+using Newtonsoft.Json;
 
 namespace MyProject.Matrix.Controllers.SysManage
 {
@@ -25,9 +26,25 @@ namespace MyProject.Matrix.Controllers.SysManage
         [SupportFilter(ActionName = "MenuList")]
         public ActionResult MenuList()
         { 
-            ViewBag.perm = GetPermission();
-            var menuList = _menusTask.GetAll().Select(EntityMapper.Map<AdminMenu, MenuModel>).ToList();
-            return View(menuList);
+            ViewBag.perm = GetPermission(); 
+            var menuList = _menusTask.GetAll() ;
+            var treeParentList = new List<MenuTreeNode>();
+            foreach (var p in menuList.Where(c=>c.ParentId==0).ToList())
+            {
+                var treeParentNode = new MenuTreeNode();
+                treeParentNode.text = p.MenuName; 
+                var treeChildList = new List<MenuTreeNode>();
+                foreach (var c in menuList.Where(c => c.ParentId == p.MenuId).ToList())
+                {
+                    var treeChildNode = new MenuTreeNode();
+                    treeChildNode.text = c.MenuName;
+                    treeChildList.Add(treeChildNode);
+                }
+                treeParentNode.nodes = treeChildList;
+                treeParentList.Add(treeParentNode);
+            }
+            ViewData["treeList"] = JsonConvert.SerializeObject(treeParentList);
+            return View();
         }
         [SupportFilter(ActionName = "SaveMenu")]
         public ActionResult SaveMenu(int? menuid)
@@ -224,4 +241,11 @@ namespace MyProject.Matrix.Controllers.SysManage
         #endregion
          
     }
+
+    //bootstrap-treeview 数据结构
+    public class MenuTreeNode
+    {
+        public string text { get; set; }
+        public List<MenuTreeNode> nodes { get; set; }  
+    } 
 }
