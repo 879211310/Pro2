@@ -32,12 +32,12 @@ namespace MyProject.Matrix.Controllers.SysManage
             foreach (var p in menuList.Where(c=>c.ParentId==0).ToList())
             {
                 var treeParentNode = new MenuTreeNode();
-                treeParentNode.text = p.MenuName; 
+                treeParentNode.text = p.MenuName +p.MenuId; 
                 var treeChildList = new List<MenuTreeNode>();
                 foreach (var c in menuList.Where(c => c.ParentId == p.MenuId).ToList())
                 {
                     var treeChildNode = new MenuTreeNode();
-                    treeChildNode.text = c.MenuName;
+                    treeChildNode.text = c.MenuName+c.MenuId;
                     treeChildList.Add(treeChildNode);
                 }
                 treeParentNode.nodes = treeChildList;

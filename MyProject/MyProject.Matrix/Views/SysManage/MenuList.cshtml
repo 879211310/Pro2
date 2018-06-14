@@ -19,12 +19,27 @@
     <script src="~/Content/Matrix_Admin/js/bootstrap-treeview.js"></script>
     <script type="text/javascript">
         $(function () {
-            $('#tree').treeview({ data:@Html.Raw(ViewData["treeList"]) });
+            $('#tree').treeview({ 
+                data: '@(Html.Raw(ViewData["treeList"]))',  
+                levels:1
+            });
+            $('#tree').on('nodeSelected', function (event, data) {
+                console.log(event);
+                console.log(data);
+            });
         });
     </script>
 </head>
 <body style="background-color:#F9F9F9;">
-  <div id="tree"></div>
+       <div style="width:250px;margin-bottom:20px; text-align:center;">
+        <button class="btn btn-primary" >添加</button>
+        <button class="btn btn-info" style="display:none;" >修改</button>
+        <button class="btn btn-danger"  style="display:none;">删除</button>
+    </div>
+  <div id="tree" style="width: 250px;float:left;"></div>
+ <div>
+
+ </div>
 </body>
 </html>
 
