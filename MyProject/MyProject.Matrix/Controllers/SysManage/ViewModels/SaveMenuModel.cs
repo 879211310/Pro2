@@ -32,5 +32,7 @@ namespace MyProject.Matrix.Controllers.SysManage.ViewModels
         /// </summary>
         [Display(Name = "排序编号")]
         public int SortOrder { get; set; }
+
+        public string CreateDate { get; set; }
     }
 }

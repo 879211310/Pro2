@@ -27,7 +27,7 @@ namespace MyProject.Core.Entities
 		/// <summary>
 		/// 
 		/// </summary>
-		public DateTime CreateDate{ get;set;}
+		public DateTime? CreateDate{ get;set;}
 		
 		/// <summary>
 		/// 

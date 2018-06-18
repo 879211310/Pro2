@@ -4,13 +4,19 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/Matrix_Admin/css") 
+    <script src="~/Content/Matrix_Admin/js/jquery.min.js"></script> 
+    @Scripts.Render("~/Content/Matrix_Admin/js")
+    @if (IsSectionDefined("Style"))
+    {
+        @RenderSection("Style");
+    }
+    @if(IsSectionDefined("Script"))
+    {
+        @RenderSection("Script");
+    }
 </head>
-<body>
-    @RenderBody()
 
-    @Scripts.Render("~/bundles/jquery")
-    @RenderSection("scripts", required: false)
-</body>
+    @RenderBody() 
+
 </html>

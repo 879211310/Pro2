@@ -122,6 +122,10 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AdminUsers\AdminUsersController.cs" />
+    <Compile Include="Controllers\AdminUsers\ViewModels\AdminUserModel.cs" />
+    <Compile Include="Controllers\AdminUsers\ViewModels\ChangePasswordModel.cs" />
+    <Compile Include="Controllers\AdminUsers\ViewModels\SaveAdminUserModel.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\Core\ExceptionLogAttrbute.cs" />
     <Compile Include="Controllers\Core\ExtendMvcHtml.cs" />
@@ -143,6 +147,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\MatrixTest.html" />
     <Content Include="Content\Matrix_Admin\css\bootstrap-3.3.4.css" />
     <Content Include="Content\Matrix_Admin\css\bootstrap-responsive.min.css" />
     <Content Include="Content\Matrix_Admin\css\bootstrap-wysihtml5.css" />
@@ -328,6 +333,9 @@
     <Content Include="Views\SysManage\SaveMenu.cshtml" />
     <Content Include="Views\SysManage\SavePower.cshtml" />
     <Content Include="Views\SysManage\SaveRole.cshtml" />
+    <Content Include="Views\AdminUsers\ChangePassword.cshtml" />
+    <Content Include="Views\AdminUsers\List.cshtml" />
+    <Content Include="Views\AdminUsers\Save.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
