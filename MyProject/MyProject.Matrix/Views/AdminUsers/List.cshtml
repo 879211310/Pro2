@@ -1,0 +1,90 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "用户管理";
+    var permList = ViewBag.perm as List<MyProject.Core.Dtos.PermDto>;
+    if (permList == null)
+    {
+        permList = new List<MyProject.Core.Dtos.PermDto>();
+    }
+}
+@using MyProject.Services.MvcPager;
+@using MyProject.Matrix.Controllers.Core;
+@model PagedList<MyProject.Matrix.Controllers.AdminUsers.ViewModels.AdminUserModel> 
+@section Script
+    {
+    <script type="text/javascript">
+        $(function () {
+            $(".box").colorbox({
+                iframe: true,
+                width: 550,
+                height: 550,
+                onClosed: function () {
+                    window.location.reload();
+                }
+            });
+        });
+
+        function IsLock(str, id) {
+            if (str == '解锁')
+                url = '/AdminUsers/UnLock?id='+id;
+            else url = '/AdminUsers/Lock?id=' + id;
+            if (confirm('是否确定' + str + '?')) {
+                $.post(url, function () {
+                    alert(str + "成功");
+                    window.location.reload();
+                });
+            }
+        }
+        $("body").css("background","");
+        </script>
+ }
+ 
+<body style="background-color:#F9F9F9;margin-top:0px;">
+<div class="widget-box" style="margin-top:0;">
+          <div class="widget-title"> 
+            <h5>用户列表</h5>
+          </div>
+          <div class="widget-content nopadding">
+            <table class="table table-bordered table-striped"> 
+                <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>用户名称</th>
+                  <th>角色名称</th>
+                  <th>是否锁定</th> 
+                    <th>操作</th>
+                </tr>
+              </thead>
+              <tbody> 
+                  @foreach (var item in Model)
+                    {
+                        <tr >
+                            <td>
+                                @item.AdminUserId
+                            </td>
+                            <td>
+                                @item.UserName
+                            </td>
+                            <td>
+                                @item.RoleName
+                            </td>
+                            <td>
+                                @(item.IsLock ? "是":"否")
+                            </td>
+                            <td>
+                                 @Html.ToolButton("btnSave", "修改", permList, "Save", "/AdminUsers/Save?id="+item.AdminUserId, "")
+                                 @Html.ToolButton("btnDelete", "删除", permList, "Delete","", "DeletePost('/AdminUsers/Delete?id="+item.AdminUserId+"')")
+                                 @Html.ToolButton("btnIsLock", item.IsLock ? "解锁":"锁定", permList, "Lock", "", "IsLock("+(item.IsLock ? "'解锁'":"'锁定'")+","+item.AdminUserId+")")
+ 
+                            </td>
+                        </tr>
+                   }
+              </tbody>
+            </table>  
+          </div>
+     <div style="">
+                @Html.Pager(Model)
+            </div> 
+        </div>
+</body>
+ 

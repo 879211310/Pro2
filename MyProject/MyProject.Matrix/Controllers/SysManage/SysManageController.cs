@@ -10,6 +10,7 @@ using MyProject.Services.Mappers;
 using MyProject.Services.MvcPager;
 using MyProject.Matrix.Controllers.Core;
 using Newtonsoft.Json;
+using MyProject.Core.Dtos;
 
 namespace MyProject.Matrix.Controllers.SysManage
 {
@@ -32,46 +33,45 @@ namespace MyProject.Matrix.Controllers.SysManage
             foreach (var p in menuList.Where(c=>c.ParentId==0).ToList())
             {
                 var treeParentNode = new MenuTreeNode();
-                treeParentNode.text = p.MenuName +p.MenuId; 
+                treeParentNode.text = p.MenuName +"_"+p.MenuId;
+                var ParentState = new MenuTreeState() { checkedd=false ,disabled=false ,expanded=false ,selected=false };
+                treeParentNode.state = ParentState;
                 var treeChildList = new List<MenuTreeNode>();
                 foreach (var c in menuList.Where(c => c.ParentId == p.MenuId).ToList())
                 {
                     var treeChildNode = new MenuTreeNode();
-                    treeChildNode.text = c.MenuName+c.MenuId;
+                    treeChildNode.text = c.MenuName + "_" + c.MenuId;
+                    var ChildState = new MenuTreeState() { checkedd=false ,disabled=false ,expanded=false ,selected=false };
+                    treeChildNode.state = ChildState;
                     treeChildList.Add(treeChildNode);
                 }
                 treeParentNode.nodes = treeChildList;
                 treeParentList.Add(treeParentNode);
             }
-            ViewData["treeList"] = JsonConvert.SerializeObject(treeParentList);
-            return View();
-        }
-        [SupportFilter(ActionName = "SaveMenu")]
-        public ActionResult SaveMenu(int? menuid)
-        {
+            ViewData["treeList"] = JsonConvert.SerializeObject(treeParentList).Replace("checkedd", "checked"); ;
+
             var parentList = _menusTask.GetParentList().ToSelectList(c => c.MenuId.ToString(), c => c.MenuName);
             parentList.Insert(0, new SelectListItem { Text = "根菜单", Value = "0" });
             ViewData["ParentList"] = parentList;
 
-            var model = new SaveMenuModel();
-            if (menuid != null)
-            {
-                var info = _menusTask.GetByMenuId((int)menuid);
-                if (info != null)
-                {
-                    model = EntityMapper.Map<AdminMenu, SaveMenuModel>(info);
-                }
-            }
-            return View(model);
+            return View();
         }
 
+        //根据菜单ID获取菜单信息
+        [HttpPost]
+        public ActionResult GetMenuInfoByMenuId(int? menuId)
+        {
+            var info = _menusTask.GetByMenuId((int)menuId);
+            var model = EntityMapper.Map<AdminMenu, SaveMenuModel>(info);
+            return Json(model);
+        }
+
+    
         [SupportFilter(ActionName = "SaveMenu")]
         [HttpPost]
         public ActionResult SaveMenu(SaveMenuModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                if (model.MenuId == null)
+        { 
+                if (model.MenuId == 0)
                 {
                     var info = new AdminMenu
                                    {
@@ -82,6 +82,7 @@ namespace MyProject.Matrix.Controllers.SysManage
                                        SortOrder = model.SortOrder,
                                    };
                     _menusTask.Add(info);
+                    return Json(new RequestResultDto() { Ret = 0, Msg = "添加成功" }); 
                 }
                 else
                 {
@@ -93,45 +94,33 @@ namespace MyProject.Matrix.Controllers.SysManage
                         info.ParentId = model.ParentId;
                         info.SortOrder = model.SortOrder;
                         _menusTask.Update(info);
-                    }
+                    } 
+                    return Json(new RequestResultDto() { Ret = 0, Msg = "修改成功" }); 
                 }
-                return AlertMsg("保存成功", Request.UrlReferrer.PathAndQuery);
-            }
-
-            var parentList = _menusTask.GetParentList().ToSelectList(c => c.MenuId.ToString(), c => c.MenuName);
-            parentList.Insert(0, new SelectListItem { Text = "根菜单", Value = "0" });
-            ViewData["ParentList"] = parentList;
-
-            return View(model);
+               
         }
 
         [SupportFilter(ActionName = "DeleteMenu")]
         [HttpPost]
-        public void DeleteMenu(int menuId)
+        public void DeleteMenu(int? menuId)
         {
-            _menusTask.DeleteByMenuId(menuId);
+            _menusTask.DeleteByMenuId(Convert.ToInt32(menuId));
         }
 
         #endregion
 
         #region 权限管理
         [SupportFilter(ActionName = "PowerList")]
-        public ActionResult SavePower(int menuId)
+        public ActionResult GetPowerListByMenuId(int menuId)
         {
-            var powerList = _powersTask.GetListByMenuId(menuId)
-               .Select(EntityMapper.Map<AdminPower, PowerModel>)
-               .ToList();
-
-            ViewData["PowerList"] = powerList;
-            var model = new SavePowerModel { MenuId = menuId };
-            return View(model);
+            var powerList = _powersTask.GetListByMenuId(menuId); 
+            return Json(powerList);
         }
+
         [SupportFilter(ActionName = "SavePower")]
         [HttpPost]
         public ActionResult SavePower(SavePowerModel model)
-        {
-            if (ModelState.IsValid)
-            {
+        { 
                 var info = new AdminPower
                                {
                                    Action = model.Action,
@@ -141,17 +130,10 @@ namespace MyProject.Matrix.Controllers.SysManage
                                    PowerCode = model.PowerCode,
                                    PowerName = model.PowerName,
                                };
-                _powersTask.Add(info);
-                return AlertMsg("保存成功", Request.UrlReferrer.PathAndQuery);
-            }
-
-            var powerList = _powersTask.GetListByMenuId(model.MenuId)
-              .Select(EntityMapper.Map<AdminPower, PowerModel>)
-              .ToList();
-
-            ViewData["PowerList"] = powerList;
-            return View(model);
+                _powersTask.Add(info); 
+                return Json(new RequestResultDto() { Ret = 0, Msg = "添加成功" }); 
         }
+
         [SupportFilter(ActionName = "DeletePower")]
         [HttpPost]
         public void DeletePower(int powerId)
@@ -246,6 +228,15 @@ namespace MyProject.Matrix.Controllers.SysManage
     public class MenuTreeNode
     {
         public string text { get; set; }
-        public List<MenuTreeNode> nodes { get; set; }  
-    } 
+        public List<MenuTreeNode> nodes { get; set; }
+        public MenuTreeState state { get; set; }
+    }
+
+    public class MenuTreeState
+    {
+        public bool checkedd { get; set; }
+        public bool disabled { get; set; }
+        public bool expanded { get; set; }
+        public bool selected { get; set; }
+    }
 }

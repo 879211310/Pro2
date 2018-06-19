@@ -11,9 +11,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
 <link rel="stylesheet" href="/Content/Matrix_Admin/css/bootstrap.min.css" />
 <link rel="stylesheet" href="/Content/Matrix_Admin/css/bootstrap-responsive.min.css" /> 
-<link rel="stylesheet" href="/Content/Matrix_Admin/css/matrix-style.css" />
-<link rel="stylesheet" href="/Content/Matrix_Admin/css/matrix-media.css" />  
-    <script src="/Content/Matrix_Admin/js/jquery.min.js"></script> 
+<link rel="stylesheet" href="/Content/Matrix_Admin/css/matrix-style.css" /> 
+<link rel="stylesheet" href="/Content/Matrix_Admin/css/matrix-media.css" />    
+<script src="/Content/Matrix_Admin/js/jquery.min.js"></script> 
+
 <script type="text/javascript">   
     //判断移动端方法
     var browser = {
@@ -38,17 +39,20 @@
     } 
 
     //iframe自适应宽高
-    function changeFrameHeight(self) { 
-        var ifm = document.getElementById(self.id);
-        var sid = document.getElementById("sidebar");//菜单条
-        ifm.height = document.documentElement.clientHeight;
-        ifm.width = document.documentElement.clientWidth- sid.clientWidth-20;//减去菜单条的宽度
-        if (browser.versions.mobile || browser.versions.ios || browser.versions.android || browser.versions.iPhone || browser.versions.iPad) {
-            ifm.width = document.documentElement.clientWidth-20;//移动端不需要减
-        } 
+    function changeFrameHeight(self) {  
+        if (self.id != null) {
+            var ifm = document.getElementById(self.id);
+            var sid = document.getElementById("sidebar");//菜单条
+            ifm.height = document.documentElement.clientHeight == null ? "" : document.documentElement.clientHeight;
+            ifm.width = document.documentElement.clientWidth - sid.clientWidth - 20;//减去菜单条的宽度
+            if (browser.versions.mobile || browser.versions.ios || browser.versions.android || browser.versions.iPhone || browser.versions.iPad) {
+                ifm.width = document.documentElement.clientWidth - 20;//移动端不需要减
+            }
+        }
+       
     } 
     window.onresize = function () {//屏幕变化是触发
-        changeFrameHeight();
+        changeFrameHeight(this);
 
     }
 </script>
@@ -92,7 +96,7 @@
           </div>
           <div class="widget-content tab-content" id="tabContent" >
             <div id="#0" class="tab-pane active" >
-               <iframe frameborder="0" name="0" id="iframepage0" src="/Home/FirstIndex" scrolling='no' onload="changeFrameHeight(this)" ></iframe>  
+               <iframe frameborder="0" name="0" id="iframepage0" src="/SysManage/MenuList"  onload="changeFrameHeight(this)" ></iframe>  
             </div>
             
           </div>
@@ -120,7 +124,11 @@
 <script type="text/javascript"> 
     $(function () {
         //点击菜单 切换tab
-        $("[hre]").click(function () { 
+        $("[hre]").click(function () {
+            $("[hre]").parent().parent().removeClass();
+            $(this).parent().parent().addClass("active");
+            console.log($("[hre]").parent().parent().html());
+            console.log($(this).parent().parent().html());
             var hre = $(this).attr("hre");
             var name = $(this).find("span").html();
             var menuId = $(this).attr("id");
@@ -145,7 +153,7 @@
             });  
             if (isAdd == 1) { //没有tab就新建tab
                 $("#tabHead").append(" <li class='active'><a data-toggle='tab' href='#" + menuId + "'>" + name + "</a></li> ");
-                $("#tabContent").append("<div id='#" + menuId + "' class='tab-pane active'><iframe frameborder='0' name='0' id='iframepage"+menuId+"'  src='" + hre + "' scrolling='no' onload='changeFrameHeight(this)' ></iframe></div>");
+                $("#tabContent").append("<div id='#" + menuId + "' class='tab-pane active'><iframe frameborder='0' name='0' id='iframepage"+menuId+"'  src='" + hre + "'  onload='changeFrameHeight(this)' ></iframe></div>");
             
             } 
             

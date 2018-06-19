@@ -27,7 +27,7 @@ namespace MyProject.Services.MvcPager
         private readonly bool _msAjaxPaging;
         private readonly AjaxOptions _ajaxOptions;
         private IDictionary<string, object> _htmlAttributes;
-        private const string CopyrightText = "\r\n<!--ASP.NET MvcPager 1.4 for ASP.NET MVC 2.0 Copyright © 2009-2010 葛劲-->\r\n";
+        private const string CopyrightText = "\r\n<!--ASP.NET MvcPager 1.4 for ASP.NET MVC 4.0 Copyright © 2018 -->\r\n";
         private const string JqueryScriptCheckItemKey = "_MvcPager_CheckjQueryScript";
         private const string ScriptPageIndexName = "*_MvcPager_PageIndex_*";
         private const string JqCheckScript = "if(typeof(jQuery)==\"undefined\"){alert(\"jQuery library not detected, please make sure it loaded prior to MvcPager!\");}";
