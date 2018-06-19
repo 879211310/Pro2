@@ -26,7 +26,7 @@ namespace MyProject.Matrix.Controllers.Core
             if (perm.Where(a => a.Action == keycode).Count() > 0)
             {
                 StringBuilder sb = new StringBuilder();
-                sb.AppendFormat("<a href=\"{0}\" onclick=\"{1}\" id=\"{2}\">{3}</a>",href,onclick,id,text);   
+                sb.AppendFormat("<a class=\"badge badge-info\" href=\"{0}\" onclick=\"{1}\" id=\"{2}\">{3}</a>", href, onclick, id, text);   
                 return new MvcHtmlString(sb.ToString());
             }
             else
