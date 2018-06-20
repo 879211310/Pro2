@@ -39,12 +39,35 @@
         </script>
  }
  
-<body style="background-color:#F9F9F9;margin-top:0px;">
+<body style="background-color:#F9F9F9;margin-top:0px;"> 
 <div class="widget-box" style="margin-top:0;">
           <div class="widget-title"> 
             <h5>用户列表</h5>
           </div>
           <div class="widget-content nopadding">
+              <div class="">
+                  <div id="DataTables_Table_0_length" class="dataTables_length">
+                     @using (Html.BeginForm("List", "AdminUsers", FormMethod.Get))
+                        {
+                            <table>
+                                <tr>
+                                    <td style="padding-right: 15px;">
+                                        用户名称：@Html.TextBox("account", null, new { @class = "span11" })
+                                    </td>
+                                    <td style="padding-right: 15px;">
+                                        用户角色：@Html.DropDownList("userRole", ViewBag.RoleList as List<SelectListItem>, new { @style="width: 130px;height: 23px;"})
+                                    </td>
+                                    <td>
+                                        <input type="submit" value="查找" class="btn btn-info btn-mini" style="padding: 4px 6px;font-size: 7px;" />
+                                    </td>
+                                </tr>
+            
+                            </table>
+                        }
+                  </div>
+
+              </div>
+
             <table class="table table-bordered table-striped"> 
                 <thead>
                 <tr>
@@ -59,19 +82,19 @@
                   @foreach (var item in Model)
                     {
                         <tr >
-                            <td>
+                            <td style="text-align:center;">
                                 @item.AdminUserId
                             </td>
-                            <td>
+                            <td style="text-align:center;">
                                 @item.UserName
                             </td>
-                            <td>
+                            <td style="text-align:center;">
                                 @item.RoleName
                             </td>
-                            <td>
+                            <td style="text-align:center;">
                                 @(item.IsLock ? "是":"否")
                             </td>
-                            <td>
+                            <td style="text-align:center;">
                                  @Html.ToolButton("btnSave", "修改", permList, "Save", "/AdminUsers/Save?id="+item.AdminUserId, "")
                                  @Html.ToolButton("btnDelete", "删除", permList, "Delete","", "DeletePost('/AdminUsers/Delete?id="+item.AdminUserId+"')")
                                  @Html.ToolButton("btnIsLock", item.IsLock ? "解锁":"锁定", permList, "Lock", "", "IsLock("+(item.IsLock ? "'解锁'":"'锁定'")+","+item.AdminUserId+")")
@@ -81,10 +104,10 @@
                    }
               </tbody>
             </table>  
-          </div>
-     <div style="">
-                @Html.Pager(Model)
-            </div> 
+          </div> 
         </div>
+       <div style="">
+            @Html.Pager(Model)
+       </div>
 </body>
  
