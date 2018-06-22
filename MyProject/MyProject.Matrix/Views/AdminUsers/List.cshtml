@@ -12,18 +12,7 @@
 @model PagedList<MyProject.Matrix.Controllers.AdminUsers.ViewModels.AdminUserModel> 
 @section Script
     {
-    <script type="text/javascript">
-        $(function () {
-            $(".box").colorbox({
-                iframe: true,
-                width: 550,
-                height: 550,
-                onClosed: function () {
-                    window.location.reload();
-                }
-            });
-        });
-
+    <script type="text/javascript"> 
         function IsLock(str, id) {
             if (str == '解锁')
                 url = '/AdminUsers/UnLock?id='+id;
@@ -38,6 +27,18 @@
         $("body").css("background","");
         </script>
  }
+@section style
+    {
+@*    <style type="text/css">
+    .modal-backdrop {
+  opacity: 0 !important;
+  filter: alpha(opacity=0) !important;
+}
+        </style>*@
+    } 
+
+   
+
  
 <body style="background-color:#F9F9F9;margin-top:0px;"> 
 <div class="widget-box" style="margin-top:0;">
@@ -95,10 +96,10 @@
                                 @(item.IsLock ? "是":"否")
                             </td>
                             <td style="text-align:center;">
-                                 @Html.ToolButton("btnSave", "修改", permList, "Save", "/AdminUsers/Save?id="+item.AdminUserId, "")
+                                 @Html.ToolButtonModal("btnSave", "修改", permList, "Save", "/AdminUsers/Save?id="+item.AdminUserId, "")
                                  @Html.ToolButton("btnDelete", "删除", permList, "Delete","", "DeletePost('/AdminUsers/Delete?id="+item.AdminUserId+"')")
                                  @Html.ToolButton("btnIsLock", item.IsLock ? "解锁":"锁定", permList, "Lock", "", "IsLock("+(item.IsLock ? "'解锁'":"'锁定'")+","+item.AdminUserId+")")
- 
+
                             </td>
                         </tr>
                    }
@@ -109,5 +110,26 @@
        <div style="">
             @Html.Pager(Model)
        </div>
+  
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">    
+    <div class="modal-dialog" role="document">    
+        <div class="modal-content">    
+            <div class="modal-header">    
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">    
+                    <span aria-hidden="true">×</span>    
+                </button>    
+                <h4 class="modal-title" id="myModalLabel">新增/保存</h4>    
+            </div>    
+            <div class="modal-body">    
+                <iframe frameborder="0" name="0" id="iframepage0" src="/adminusers/Save" ></iframe>  
+            </div>   
+        </div>    
+    </div>    
+</div>   
+
+
 </body>
+ 
+<script src="/Content/Matrix_Admin/js/jquery.min.js"></script>  
+<script src="/Content/Matrix_Admin/js/bootstrap.min.js"></script>   
  

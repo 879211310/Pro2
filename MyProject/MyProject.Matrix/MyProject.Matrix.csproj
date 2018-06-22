@@ -148,7 +148,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\MatrixTest.html" />
-    <Content Include="Content\Matrix_Admin\css\bootstrap-3.3.4.css" />
+    <Content Include="Content\Matrix_Admin\css\bootstrap.css" />
     <Content Include="Content\Matrix_Admin\css\bootstrap-responsive.min.css" />
     <Content Include="Content\Matrix_Admin\css\bootstrap-wysihtml5.css" />
     <Content Include="Content\Matrix_Admin\css\bootstrap.min.css" />
