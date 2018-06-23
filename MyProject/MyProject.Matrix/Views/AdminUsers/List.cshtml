@@ -9,37 +9,8 @@
 }
 @using MyProject.Services.MvcPager;
 @using MyProject.Matrix.Controllers.Core;
-@model PagedList<MyProject.Matrix.Controllers.AdminUsers.ViewModels.AdminUserModel> 
-@section Script
-    {
-    <script type="text/javascript"> 
-        function IsLock(str, id) {
-            if (str == '解锁')
-                url = '/AdminUsers/UnLock?id='+id;
-            else url = '/AdminUsers/Lock?id=' + id;
-            if (confirm('是否确定' + str + '?')) {
-                $.post(url, function () {
-                    alert(str + "成功");
-                    window.location.reload();
-                });
-            }
-        }
-        $("body").css("background","");
-        </script>
- }
-@section style
-    {
-@*    <style type="text/css">
-    .modal-backdrop {
-  opacity: 0 !important;
-  filter: alpha(opacity=0) !important;
-}
-        </style>*@
-    } 
+@model PagedList<MyProject.Matrix.Controllers.AdminUsers.ViewModels.AdminUserModel>  
 
-   
-
- 
 <body style="background-color:#F9F9F9;margin-top:0px;"> 
 <div class="widget-box" style="margin-top:0;">
           <div class="widget-title"> 
@@ -59,7 +30,8 @@
                                         用户角色：@Html.DropDownList("userRole", ViewBag.RoleList as List<SelectListItem>, new { @style="width: 130px;height: 23px;"})
                                     </td>
                                     <td>
-                                        <input type="submit" value="查找" class="btn btn-info btn-mini" style="padding: 4px 6px;font-size: 7px;" />
+                                        <input type="submit" value="查找" class="btn btn-mini" style="padding: 4px 8px;font-weight:bold;" />
+                                         @Html.ToolButton("btnSave", "新增用户", permList, "Save", @Url.Action("Save", "AdminUsers"), "")
                                     </td>
                                 </tr>
             
@@ -96,7 +68,7 @@
                                 @(item.IsLock ? "是":"否")
                             </td>
                             <td style="text-align:center;">
-                                 @Html.ToolButtonModal("btnSave", "修改", permList, "Save", "/AdminUsers/Save?id="+item.AdminUserId, "")
+                                 @Html.ToolButton("btnSave", "修改", permList, "Save", "/AdminUsers/Save?id="+item.AdminUserId, "")
                                  @Html.ToolButton("btnDelete", "删除", permList, "Delete","", "DeletePost('/AdminUsers/Delete?id="+item.AdminUserId+"')")
                                  @Html.ToolButton("btnIsLock", item.IsLock ? "解锁":"锁定", permList, "Lock", "", "IsLock("+(item.IsLock ? "'解锁'":"'锁定'")+","+item.AdminUserId+")")
 
@@ -109,27 +81,47 @@
         </div>
        <div style="">
             @Html.Pager(Model)
-       </div>
-  
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">    
-    <div class="modal-dialog" role="document">    
-        <div class="modal-content">    
-            <div class="modal-header">    
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">    
-                    <span aria-hidden="true">×</span>    
-                </button>    
-                <h4 class="modal-title" id="myModalLabel">新增/保存</h4>    
-            </div>    
-            <div class="modal-body">    
-                <iframe frameborder="0" name="0" id="iframepage0" src="/adminusers/Save" ></iframe>  
-            </div>   
-        </div>    
-    </div>    
-</div>   
+       </div> 
+</body>  
+@section Script
+    {
+    <script type="text/javascript">
+        $(function () { 
+                $(".badge.badge-info").colorbox({//弹窗
+                    iframe: true,
+                    opacity: 0.8,//遮罩0为透明
+                    width: "500px",
+                    height: "450px",
+                    onClosed: function () {
+                        window.location.reload();
+                    },
+                    onOpen: function () {
+                        //alert('onOpen: colorbox 即将打开');
+                    },
+                    onLoad: function () {
+                        //alert('onLoad: colorbox已经开始加载目标内容');
+                    },
+                    onComplete: function () {
+                        //alert('onComplete: colorbox已显示加载内容');
+                        $("#colorbox").css({ "width": "600px", "height": "600px", "top": "50px" })//修改弹框的宽高
+                    },
+                    onCleanup: function () {
+                        // alert('onCleanup: colorbox已经开始关闭过程');
+                    }
+                }); 
+           
+        });
 
-
-</body>
- 
-<script src="/Content/Matrix_Admin/js/jquery.min.js"></script>  
-<script src="/Content/Matrix_Admin/js/bootstrap.min.js"></script>   
- 
+        function IsLock(str, id) {
+            if (str == '解锁')
+                url = '/AdminUsers/UnLock?id=' + id;
+            else url = '/AdminUsers/Lock?id=' + id;
+            if (confirm('是否确定' + str + '?')) {
+                $.post(url, function () {
+                    alert(str + "成功");
+                    window.location.reload();
+                });
+            }
+        } 
+    </script>
+}

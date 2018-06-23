@@ -147,8 +147,21 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\colorbox\colorbox.css" />
+    <Content Include="Content\colorbox\images\border1.png" />
+    <Content Include="Content\colorbox\images\border2.png" />
+    <Content Include="Content\colorbox\images\ie6\borderBottomCenter.png" />
+    <Content Include="Content\colorbox\images\ie6\borderBottomLeft.png" />
+    <Content Include="Content\colorbox\images\ie6\borderBottomRight.png" />
+    <Content Include="Content\colorbox\images\ie6\borderMiddleLeft.png" />
+    <Content Include="Content\colorbox\images\ie6\borderMiddleRight.png" />
+    <Content Include="Content\colorbox\images\ie6\borderTopCenter.png" />
+    <Content Include="Content\colorbox\images\ie6\borderTopLeft.png" />
+    <Content Include="Content\colorbox\images\ie6\borderTopRight.png" />
+    <Content Include="Content\colorbox\images\loading.gif" />
+    <Content Include="Content\colorbox\jquery.colorbox-min.js" />
+    <Content Include="Content\colorbox\jquery.colorbox.js" />
     <Content Include="Content\MatrixTest.html" />
-    <Content Include="Content\Matrix_Admin\css\bootstrap.css" />
     <Content Include="Content\Matrix_Admin\css\bootstrap-responsive.min.css" />
     <Content Include="Content\Matrix_Admin\css\bootstrap-wysihtml5.css" />
     <Content Include="Content\Matrix_Admin\css\bootstrap.min.css" />
@@ -162,6 +175,7 @@
     <Content Include="Content\Matrix_Admin\css\select2.css" />
     <Content Include="Content\Matrix_Admin\css\uniform.css" />
     <Content Include="Content\Matrix_Admin\font-awesome\css\font-awesome.css" />
+    <Content Include="Content\Matrix_Admin\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\Matrix_Admin\images\backgrounds\calActiveBg.html" />
     <Content Include="Content\Matrix_Admin\images\gallery\imgbox3.html" />
     <Content Include="Content\Matrix_Admin\img\alpha.html" />
@@ -201,12 +215,12 @@
     <Content Include="Content\Matrix_Admin\js\BootstrapMenu.min.js" />
     <Content Include="Content\Matrix_Admin\js\excanvas.min.js" />
     <Content Include="Content\Matrix_Admin\js\fullcalendar.min.js" />
+    <Content Include="Content\Matrix_Admin\js\jquery.min.js" />
     <Content Include="Content\Matrix_Admin\js\jquery.dataTables.min.js" />
     <Content Include="Content\Matrix_Admin\js\jquery.flot.min.js" />
     <Content Include="Content\Matrix_Admin\js\jquery.flot.pie.min.js" />
     <Content Include="Content\Matrix_Admin\js\jquery.flot.resize.min.js" />
     <Content Include="Content\Matrix_Admin\js\jquery.gritter.min.js" />
-    <Content Include="Content\Matrix_Admin\js\jquery.min.js" />
     <Content Include="Content\Matrix_Admin\js\jquery.peity.min.js" />
     <Content Include="Content\Matrix_Admin\js\jquery.toggle.buttons.html" />
     <Content Include="Content\Matrix_Admin\js\jquery.ui.custom.js" />
@@ -297,6 +311,10 @@
     <Content Include="Content\Matrix_Admin\img\demo\Descr.WD3" />
     <Content Include="Content\Matrix_Admin\img\Descr.WD3" />
     <Content Include="Content\Matrix_Admin\img\gallery\Descr.WD3" />
+    <Content Include="Content\Matrix_Admin\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\Matrix_Admin\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\Matrix_Admin\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\Matrix_Admin\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />

@@ -101,7 +101,7 @@
                 @(item.IsLock ? "是":"否")
             </td>
             <td>
-                 @Html.ToolButton("btnSave", "修改", permList, "Save", "/AdminUsers/Save?id="+item.AdminUserId, "")
+                 @Html.ToolButton("btnSave", "修改", permList, "Save", "/AdminUsers/Save?id="+item.AdminUserId, "","box")
                  @Html.ToolButton("btnDelete", "删除", permList, "Delete","", "DeletePost('/AdminUsers/Delete?id="+item.AdminUserId+"')")
                  @Html.ToolButton("btnIsLock", item.IsLock ? "解锁":"锁定", permList, "Lock", "", "IsLock("+(item.IsLock ? "'解锁'":"'锁定'")+","+item.AdminUserId+")")
  

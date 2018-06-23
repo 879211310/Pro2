@@ -39,29 +39,28 @@ namespace MyProject.Matrix
                         "~/Content/themes/base/jquery.ui.progressbar.css",
                         "~/Content/themes/base/jquery.ui.theme.css"));
 
-            bundles.Add(new StyleBundle("~/Content/Matrix_Admin/css").Include(
-                       "~/Content/Matrix_Admin/css/bootstrap-3.3.4.css",
-                       "~/Content/Matrix_Admin/css/bootstrap.min.css",
-                       "~/Content/Matrix_Admin/css/bootstrap-responsive.min.css",
-                       "~/Content/Matrix_Admin/css/colorpicker.css",
-                       "~/Content/Matrix_Admin/css/uniform.css",
-                       "~/Content/Matrix_Admin/css/uniform.css",
-                       "~/Content/Matrix_Admin/css/select2.css",
-                       "~/Content/Matrix_Admin/css/matrix-style.css",
-                       "~/Content/Matrix_Admin/css/matrix-media.css",
-                       "~/Content/Matrix_Admin/css/bootstrap-wysihtml5.css"));
+            //bundles.Add(new StyleBundle("~/Content/Matrix_Admin/css").Include(
+            //           "~/Content/Matrix_Admin/css/bootstrap-3.3.4.css",
+            //           "~/Content/Matrix_Admin/css/bootstrap.min.css",
+            //           "~/Content/Matrix_Admin/css/bootstrap-responsive.min.css",
+            //           "~/Content/Matrix_Admin/css/colorpicker.css",
+            //           "~/Content/Matrix_Admin/css/uniform.css", 
+            //           "~/Content/Matrix_Admin/css/select2.css",
+            //           "~/Content/Matrix_Admin/css/matrix-style.css",
+            //           "~/Content/Matrix_Admin/css/matrix-media.css",
+            //           "~/Content/Matrix_Admin/css/bootstrap-wysihtml5.css"));
 
-            bundles.Add(new StyleBundle("~/Content/Matrix_Admin/js").Include( 
-                       "~/Content/Matrix_Admin/js/bootstrap.min.js",
-                       "~/Content/Matrix_Admin/js/bootstrap-colorpicker.js",
-                       "~/Content/Matrix_Admin/js/bootstrap-datepicker.js",
-                       "~/Content/Matrix_Admin/js/masked.js",
-                       "~/Content/Matrix_Admin/js/jquery.uniform.js",
-                       "~/Content/Matrix_Admin/js/select2.min.js",
-                       "~/Content/Matrix_Admin/js/matrix.js",
-                        "~/Content/Matrix_Admin/js/jquery.peity.min.js",
-                       "~/Content/Matrix_Admin/js/bootstrap-wysihtml5.js",
-                       "~/Content/Matrix_Admin/js/wysihtml5-0.3.0.js")); 
+            //bundles.Add(new StyleBundle("~/Content/Matrix_Admin/js").Include( 
+            //           "~/Content/Matrix_Admin/js/bootstrap.min.js",
+            //           "~/Content/Matrix_Admin/js/bootstrap-colorpicker.js",
+            //           "~/Content/Matrix_Admin/js/bootstrap-datepicker.js",
+            //           "~/Content/Matrix_Admin/js/masked.js",
+            //           "~/Content/Matrix_Admin/js/jquery.uniform.js",
+            //           "~/Content/Matrix_Admin/js/select2.min.js",
+            //           //"~/Content/Matrix_Admin/js/matrix.js",
+            //            "~/Content/Matrix_Admin/js/jquery.peity.min.js",
+            //           "~/Content/Matrix_Admin/js/bootstrap-wysihtml5.js",
+            //           "~/Content/Matrix_Admin/js/wysihtml5-0.3.0.js")); 
              
         }
     }
