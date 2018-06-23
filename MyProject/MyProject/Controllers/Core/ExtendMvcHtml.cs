@@ -21,12 +21,12 @@ namespace MyProject.Controllers.Core
         /// <param name="keycode">操作码</param>
         /// <param name="hr">分割线</param>
         /// <returns>html</returns>
-        public static MvcHtmlString ToolButton(this HtmlHelper helper, string id, string text, List<PermDto> perm, string keycode,string href,string onclick)
+        public static MvcHtmlString ToolButton(this HtmlHelper helper, string id, string text, List<PermDto> perm, string keycode,string href,string onclick,string className="")
         {
             if (perm.Where(a => a.Action == keycode).Count() > 0)
             {
                 StringBuilder sb = new StringBuilder();
-                sb.AppendFormat("<a href=\"{0}\" onclick=\"{1}\" id=\"{2}\">{3}</a>",href,onclick,id,text);   
+                sb.AppendFormat("<a href=\"{0}\" onclick=\"{1}\" id=\"{2}\" class=\"{4}\">{3}</a>",href,onclick,id,text,className);   
                 return new MvcHtmlString(sb.ToString());
             }
             else

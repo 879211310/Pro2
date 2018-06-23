@@ -14,7 +14,7 @@ namespace MyProject.Matrix.Controllers.AdminUsers.ViewModels
         /// 用户名称
         /// </summary>
         [Display(Name = "用户名称"), Required(ErrorMessage = "请输入用户名称")]
-        public string UserName1 { get; set; }
+        public string UserName { get; set; }
 
         /// <summary>
         /// 密码
