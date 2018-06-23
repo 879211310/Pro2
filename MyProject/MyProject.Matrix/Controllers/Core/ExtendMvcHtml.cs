@@ -35,20 +35,7 @@ namespace MyProject.Matrix.Controllers.Core
             }
         }
 
-        //带模态弹窗的按钮
-        public static MvcHtmlString ToolButtonModal(this HtmlHelper helper, string id, string text, List<PermDto> perm, string keycode, string href, string onclick, string target = "myModal")
-        {
-            if (perm.Where(a => a.Action == keycode).Count() > 0)
-            {
-                StringBuilder sb = new StringBuilder();
-                sb.AppendFormat("<a class=\"badge badge-info\" data-toggle='modal' data-target='#{4}' href=\"{0}\" onclick=\"{1}\" id=\"{2}\">{3}</a>", href, onclick, id, text, target);
-                return new MvcHtmlString(sb.ToString());
-            }
-            else
-            {
-                return new MvcHtmlString("");
-            }
-        }
+        
         /// <summary>
         /// 普通按钮
         /// </summary>
