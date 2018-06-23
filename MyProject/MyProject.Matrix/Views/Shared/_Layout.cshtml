@@ -4,8 +4,20 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    @Styles.Render("~/Content/Matrix_Admin/css") 
-    <script src="~/Content/Matrix_Admin/js/jquery.min.js"></script> 
+   @* @Styles.Render("~/Content/Matrix_Admin/css") *@ 
+    <link href="~/Content/Matrix_Admin/css/bootstrap.min.css" rel="stylesheet" /> 
+    <link href="~/Content/Matrix_Admin/css/bootstrap-responsive.min.css" rel="stylesheet" />
+    <link href="~/Content/Matrix_Admin/css/colorpicker.css" rel="stylesheet" />
+    <link href="~/Content/Matrix_Admin/css/uniform.css" rel="stylesheet" />
+    <link href="~/Content/Matrix_Admin/css/select2.css" rel="stylesheet" />
+    <link href="~/Content/Matrix_Admin/css/matrix-style.css" rel="stylesheet" />
+    <link href="~/Content/Matrix_Admin/css/matrix-media.css" rel="stylesheet" />
+    <link href="~/Content/Matrix_Admin/css/bootstrap-wysihtml5.css" rel="stylesheet" />
+    @*<script src="/Content/Matrix_Admin/js/jquery.min.js" ></script> *@
+    <script src="/Scripts/jquery-1.7.1.min.js"></script>
+
+     
+
     @Scripts.Render("~/Content/Matrix_Admin/js")
     @if (IsSectionDefined("Style"))
     {

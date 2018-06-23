@@ -122,13 +122,10 @@
 <script src="/Content/Matrix_Admin/js/jquery.uniform.js"></script> 
 <script src="~/Content/Matrix_Admin/js/BootstrapMenu.min.js"></script>@*右键菜单js*@
 <script type="text/javascript"> 
-    $(function () {
+    $(function () { 
+
         //点击菜单 切换tab
-        $("[hre]").click(function () {
-            $("[hre]").parent().parent().removeClass();
-            $(this).parent().parent().addClass("active");
-            console.log($("[hre]").parent().parent().html());
-            console.log($(this).parent().parent().html());
+        $("[hre]").click(function () { 
             var hre = $(this).attr("hre");
             var name = $(this).find("span").html();
             var menuId = $(this).attr("id");

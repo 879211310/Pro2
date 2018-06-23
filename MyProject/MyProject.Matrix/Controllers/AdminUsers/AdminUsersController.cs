@@ -63,7 +63,7 @@ namespace MyProject.Matrix.Controllers.AdminUsers
         public ActionResult Save(SaveAdminUserModel savemodel)
         {
             ViewBag.RoleList = _adminUserRoleTask.GetAll().ToSelectList(c => c.RoleId.ToString(), c => c.RoleName);
-            var user = _adminUserTask.GetByUserName(savemodel.UserName);
+            var user = _adminUserTask.GetByUserName(savemodel.UserName1);
             if (user != null)
             {
                 ModelState.AddModelError("UserName", "用户名称已注册");
@@ -74,7 +74,7 @@ namespace MyProject.Matrix.Controllers.AdminUsers
                 {
                     var model = new AdminUser
                                     {
-                                        UserName = savemodel.UserName,
+                                        UserName = savemodel.UserName1,
                                         Password = CryptTools.HashPassword(savemodel.Password),
                                         IsLock = false,
                                         RoleId = savemodel.RoleId
@@ -88,7 +88,7 @@ namespace MyProject.Matrix.Controllers.AdminUsers
                     if(model == null)
                         return AlertMsg("参数错误", HttpContext.Request.UrlReferrer.PathAndQuery);
 
-                    model.UserName = savemodel.UserName;
+                    model.UserName = savemodel.UserName1;
                     model.Password = CryptTools.HashPassword(savemodel.Password);
                     model.RoleId = savemodel.RoleId;
 
