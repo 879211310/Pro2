@@ -20,7 +20,7 @@ namespace MyProject.Matrix.Controllers.AdminUsers
 
         #region 查看用户列表 List
         [SupportFilter(ActionName="Index")]
-        public ActionResult List(string account,int? userRole,int pageIndex = 1,int pageSize = 1)
+        public ActionResult List(string account,int? userRole,int pageIndex = 1,int pageSize = 5)
         {
             ViewBag.perm = GetPermission();
             var roleList = _adminUserRoleTask.GetAll().ToSelectList(c => c.RoleId.ToString(), c => c.RoleName);
@@ -63,6 +63,10 @@ namespace MyProject.Matrix.Controllers.AdminUsers
         public ActionResult Save(SaveAdminUserModel savemodel)
         {
             ViewBag.RoleList = _adminUserRoleTask.GetAll().ToSelectList(c => c.RoleId.ToString(), c => c.RoleName);
+            if (savemodel.Password != savemodel.PasswordTwo)
+            {
+                ModelState.AddModelError("PasswordTwo", "密码不一致");
+            }
             var user = _adminUserTask.GetByUserName(savemodel.UserName);
             if (user != null)
             {
@@ -94,7 +98,7 @@ namespace MyProject.Matrix.Controllers.AdminUsers
 
                     _adminUserTask.Update(model);
                 }
-                return AlertMsg("保存成功", HttpContext.Request.UrlReferrer.PathAndQuery);
+                return CloseParentBox("保存成功", "/AdminUsers/List");
             }
             return View(savemodel);
         }
@@ -166,7 +170,7 @@ namespace MyProject.Matrix.Controllers.AdminUsers
             {
                 user.Password = CryptTools.HashPassword(model.AgainPw);
                 _adminUserTask.Update(user);
-                return AlertMsg("修改成功！", "/account/index");
+                return CloseParentBox("修改成功！", "/Home/LogInIndex");
             }
             return View();
         } 

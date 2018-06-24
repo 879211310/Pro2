@@ -31,7 +31,7 @@
                                     </td>
                                     <td>
                                         <input type="submit" value="查找" class="btn btn-mini" style="padding: 4px 8px;font-weight:bold;" />
-                                         @Html.ToolButton("btnSave", "新增用户", permList, "Save", @Url.Action("Save", "AdminUsers"), "")
+                                         @Html.ToolButton("btnAdd", "新增用户", permList, "Save", @Url.Action("Save", "AdminUsers"), "")
                                     </td>
                                 </tr>
             
@@ -86,32 +86,31 @@
 @section Script
     {
     <script type="text/javascript">
-        $(function () { 
-                $(".badge.badge-info").colorbox({//弹窗
-                    iframe: true,
-                    opacity: 0.8,//遮罩0为透明
-                    width: "500px",
-                    height: "450px",
-                    onClosed: function () {
-                        window.location.reload();
-                    },
-                    onOpen: function () {
-                        //alert('onOpen: colorbox 即将打开');
-                    },
-                    onLoad: function () {
-                        //alert('onLoad: colorbox已经开始加载目标内容');
-                    },
-                    onComplete: function () {
-                        //alert('onComplete: colorbox已显示加载内容');
-                        $("#colorbox").css({ "width": "600px", "height": "600px", "top": "50px" })//修改弹框的宽高
-                    },
-                    onCleanup: function () {
-                        // alert('onCleanup: colorbox已经开始关闭过程');
-                    }
-                }); 
-           
-        });
+        $(function () {
+            $("#btnSave,#btnAdd").colorbox({//弹窗
+                iframe: true,
+                opacity: 0.8,//遮罩0为透明
+                width: "500px",
+                height: "380px",
+                onClosed: function () {
+                    window.location.reload();
+                },
+                onOpen: function () {
+                    //alert('onOpen: colorbox 即将打开');
+                },
+                onLoad: function () {
+                    //alert('onLoad: colorbox已经开始加载目标内容');
+                },
+                onComplete: function () {
+                    //alert('onComplete: colorbox已显示加载内容');
+                    $("#colorbox").css({ "width": "500px", "height": "380px", "top": "30px" })//修改弹框/遮罩的宽高
+                },
+                onCleanup: function () {
+                    // alert('onCleanup: colorbox已经开始关闭过程');
+                }
+            });
 
+        });
         function IsLock(str, id) {
             if (str == '解锁')
                 url = '/AdminUsers/UnLock?id=' + id;
@@ -122,6 +121,14 @@
                     window.location.reload();
                 });
             }
-        } 
+        }
+        function DeletePost(url, data) {
+            if (confirm('是否确定删除?')) {
+                $.post(url, data, function () {
+                    alert('删除成功');
+                    window.location.reload();
+                });
+            }
+        }
     </script>
 }

@@ -331,7 +331,9 @@
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -348,8 +350,6 @@
     <Content Include="Views\Home\FirstIndex.cshtml" />
     <Content Include="Views\SysManage\MenuList.cshtml" />
     <Content Include="Views\SysManage\RoleList.cshtml" />
-    <Content Include="Views\SysManage\SaveMenu.cshtml" />
-    <Content Include="Views\SysManage\SavePower.cshtml" />
     <Content Include="Views\SysManage\SaveRole.cshtml" />
     <Content Include="Views\AdminUsers\ChangePassword.cshtml" />
     <Content Include="Views\AdminUsers\List.cshtml" />
