@@ -12,16 +12,25 @@ namespace MyProject.Data.Daos
     [DbFactory("MyP")]
     public class SysLogDao:BaseDao<SysLog>
     {
-        public SysLog GetSysLog(string id)
+        public SysLog GetSysLog(int id)
         {
             var sql = Sql.Builder.Where("Id=@0", id);
             return FirstOrDefault<SysLog>(sql);
         }
 
-        public List<SysLog> GetList()
+        public PagedList<SysLog> GetPagedList(int logType, int logModule, int pageIndex, int pageSize)
         {
-            var sql = Sql.Builder.OrderBy("Createtime desc");
-            return Query<SysLog>(sql).ToList();
+            var sql = Sql.Builder;
+            if (logType != 0)
+            {
+                sql.Where("Type=@0",logType);
+            }
+            if (logModule != 0)
+            {
+                sql.Where("Module=@0", logModule);
+            }
+            sql.OrderBy("Createtime desc");
+            return PagedList<SysLog>(pageIndex,pageSize,sql);
         }
     }
 }

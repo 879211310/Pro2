@@ -1,4 +1,5 @@
-﻿using MyProject.Matrix.Controllers.Core;
+﻿using MyProject.Core.Enum;
+using MyProject.Matrix.Controllers.Core;
 using MyProject.Task;
 using Newtonsoft.Json;
 using System;
@@ -6,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MyProject.Services.Extensions;
 
 namespace MyProject.Matrix.Controllers.SysLog
 {
@@ -15,11 +17,18 @@ namespace MyProject.Matrix.Controllers.SysLog
         private readonly SysExceptionTask _extTask = new SysExceptionTask();
 
         [SupportFilter]
-        public ActionResult IndexLog()
+        public ActionResult IndexLog(int logType=0, int logModule=0, int pageIndex = 1, int pageSize = 15)
         {
-            var list = _logTask.GetList();
-            ViewBag.list = "{Rows:" + JsonConvert.SerializeObject(list) + ",Total:" + list.Count + "}";  //列表
-            return View();
+
+            ViewData["LogTypeList"] = LogTypeEnum.Add.ToSelectList();
+            ViewData["LogModuleList"] = LogModuleEnum.Land.ToSelectList();
+            var model = _logTask.GetPagedList(logType,logModule, pageIndex, pageSize);
+            return View(model);
+        }
+        [HttpPost]
+        public ActionResult GetLog(int id)
+        {
+            return Json(_logTask.GetSysLog(id));
         }
 
        

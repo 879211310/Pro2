@@ -202,6 +202,10 @@
 
             //点击权限添加按钮添加权限
             $("#power_btn_add").click(function () {
+                if (menuid == 0) {
+                    alert("请选择要添加权限的菜单！");
+                    return;
+                }
                 IsAdd = true;
                 $("#power_div_opt_1").css("display", "none");
                 $("#power_div_opt_2").css("display", "block");

@@ -29,11 +29,16 @@ namespace MyProject.Task
             data.Type = (int)model.Type;
             data.Result = model.Result;
             _log.Add(data);
-        } 
+        }
 
-        public List<SysLog> GetList()
+        public PagedList<SysLog> GetPagedList(int logType, int logModule, int pageIndex, int pageSize)
         {
-            return  _log.GetList(); 
+            return _log.GetPagedList(logType,logModule, pageIndex, pageSize);
+        }
+
+        public SysLog GetSysLog(int id)
+        {
+            return _log.GetSysLog(id);
         }
          
     }
