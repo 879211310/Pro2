@@ -1,4 +1,5 @@
 ﻿using MyProject.Core.Entities;
+using MyProject.Services.MvcPager;
 using MyProject.Services.ORM;
 using System;
 using System.Collections.Generic;
@@ -11,10 +12,21 @@ namespace MyProject.Data.Daos
     [DbFactory("MyP")]
     public class SysExceptionDao : BaseDao<SysException>
     {
-        public List<SysException> GetList()
+        public PagedList<SysException> GetPagedList(string helpLink, int pageIndex, int pageSize)
         {
-            var sql = Sql.Builder.OrderBy("Createtime desc");
-            return Query<SysException>(sql).ToList();
+            var sql = Sql.Builder;
+            if (!string.IsNullOrEmpty(helpLink))
+            {
+                sql.Where("HelpLink like'%"+helpLink+"%'");
+            }
+            sql.OrderBy("Createtime desc");
+            return PagedList<SysException>(pageIndex,pageSize,sql);
+        }
+
+        public SysException GetExt(int id)
+        {
+            var sql = Sql.Builder.Where("Id=@0",id);
+            return FirstOrDefault<SysException>(sql);
         }
     }
 }

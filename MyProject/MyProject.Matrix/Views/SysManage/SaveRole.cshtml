@@ -5,9 +5,10 @@
     var menuList = (List<RoleMenuModel>)ViewData["MenuList"];
     var powerList = (List<RolePowerModel>)ViewData["PowerList"];
 }
- 
+
 @using MyProject.Matrix.Controllers.SysManage.ViewModels
 @model SaveUserRoleModel  
+
 <script type="text/javascript">
     $(function () {
         $("body").css({ "background-color": "#F9F9F9", "margin-top": "0px" });
@@ -18,109 +19,69 @@
     <div class="widget-title">
         <h5>保存角色</h5>
     </div>
-      <div class="widget-content nopadding">
+    <div class="widget-content nopadding">
         @using (Html.BeginForm("SaveRole", "SysManage", FormMethod.Post, new { id = "form1", @class = "formular" }))
         {
   
             @Html.HiddenFor(c => c.RoleId)  
-                <label style="margin: 10px 10px;">
-                    <span>角色名称</span> 
-                     @Html.TextBoxFor(c => c.RoleName, new { @style = "width:200px;height: 30px;" })
-                </label>
-                <ul style="line-height: 24px; margin-top: 20px;">
-                    @foreach (var item in menuList.Where(c => c.ParentId == 0))
+            <label style="margin: 10px 10px;">
+                <span>角色名称</span>
+                @Html.TextBoxFor(c => c.RoleName, new { @style = "width:200px;height: 30px;" })
+            </label>
+            <ul style="line-height: 24px; margin-top: 20px;">
+                @foreach (var item in menuList.Where(c => c.ParentId == 0))
                     {
            
-                       <div class="controls">
-                             <label>
-                                  <div class="checker" id="uniform-undefined">
-                                      <span   @if (item.IsSelected)
-                                              {
-                                                    <text>class="checked"</text>
-                                              }>
-                                          <input type="checkbox" name="MenuId" style="opacity: 0;" value="@item.MenuId" 
-                                              @if (item.IsSelected)
-                                              {
-                                                    <text>checked="checked"</text>
-                                              }/>
-                                      </span> 
-                                  </div>
-                                 @item.MenuName
-                                </label>  
-                            @if (powerList.Any(c => c.MenuId == item.MenuId))
+                    <div class="controls">
+                        <input style="display:inline-block;" type="checkbox" name="MenuId" value="@item.MenuId" @if(item.IsSelected)
+                                                                {
+                                                                    <text>checked="checked"</text>
+                                                                }/>
+                        @item.MenuName
+                        @if (powerList.Any(c => c.MenuId == item.MenuId))
                             {
-                                <text>权限:</text>
+                            <text>权限:</text>
                             }
-                            @foreach (var power in powerList.Where(c => c.MenuId == item.MenuId))
+                        @foreach (var power in powerList.Where(c => c.MenuId == item.MenuId))
                             { 
-                                <label>
-                                  <div class="checker" id="uniform-undefined">
-                                      <span   @if (power.IsSelected)
-                                              {
-                                                    <text>class="checked"</text>
-                                              }>
-                                          <input type="checkbox" name="PowerId" style="opacity: 0;" value="@power.PowerId" 
-                                              @if (power.IsSelected)
-                                              {
-                                                    <text>checked="checked"</text>
-                                              }/>
-                                      </span> 
-                                  </div>
-                                 @power.PowerName
-                                </label>   
+                            <input style="display:inline-block;" type="checkbox" name="PowerId" value="@power.PowerId" @if (power.IsSelected)
+                                                                    {
+                                                                    <text>checked="checked"</text>
+                                                                    }/>
+                            @power.PowerName
                             }
-                        </div>   
-                        <ul>
-                            @foreach (var child in menuList.Where(c => c.ParentId == item.MenuId))
+                    </div>   
+                    <ul>
+                        @foreach (var child in menuList.Where(c => c.ParentId == item.MenuId))
                             {
-                                <div class="controls">
-                                     <label>
-                                  <div class="checker" id="uniform-undefined">
-                                      <span   @if (child.IsSelected)
-                                              {
-                                                    <text>class="checked"</text>
-                                              }>
-                                          <input type="checkbox" name="MenuId" style="opacity: 0;" value="@child.MenuId" 
-                                              @if (child.IsSelected)
-                                              {
-                                                    <text>checked="checked"</text>
-                                              }/>
-                                      </span> 
-                                  </div>
-                                 @child.MenuName
-                                </label> 
-                             
-                                    @if (powerList.Any(c => c.MenuId == child.MenuId))
+                            <div class="controls">
+                                <input style="display:inline-block;" type="checkbox" name="MenuId" value="@child.MenuId" @if (child.IsSelected)
+                                                                         {
+                                                                    <text>checked="checked"</text>
+                                                                         }/>
+                                @child.MenuName
+
+                                @if (powerList.Any(c => c.MenuId == child.MenuId))
                                     {
-                                        <label style="margin-left: 20px;display:inline-block;" class="red">
-                                            权限</label>
+                                    <label style="margin-left: 20px; display: inline-block;" class="red">
+                                        权限</label>
                                     }
-                                    @foreach (var power in powerList.Where(c => c.MenuId == child.MenuId))
+                                @foreach (var power in powerList.Where(c => c.MenuId == child.MenuId))
                                     {
-                                         <label>
-                                  <div class="checker" id="uniform-undefined">
-                                      <span  @if (power.IsSelected)
-                                             {
-                                                <text>class="checked"</text>
-                                             }> 
-                                          <input type="checkbox" name="PowerId" style="opacity: 0;" value="@power.PowerId" 
-                                              @if (power.IsSelected)
-                                              {
-                                                <text>checked="checked"</text>
-                                              }/> 
-                                      </span> 
-                                  </div>
-                                @power.PowerName 
-                                </label> 
+                                    <input style="display:inline-block;" type="checkbox" name="PowerId" value="@power.PowerId" @if (power.IsSelected)
+                                                                                             {
+                                                                    <text>checked="checked"</text>
+                                                                                             }/>
+                                    @power.PowerName
                                         
                                     }
-                                </div> 
+                            </div> 
                             }
-                        </ul>
+                    </ul>
                     }
-                     <input type="submit" value="保存" class="btn btn-success btn-mini" style="position: relative;left: 700px;"/> 
-                </ul>
+                <input type="submit" value="保存" class="btn btn-success btn-mini" style="position: relative; left: 700px;" />
+            </ul>
                
         }
-      </div>
+    </div>
 </div>
