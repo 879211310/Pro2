@@ -27,19 +27,22 @@
                     <tr class="even gradeA">
                         <td>@Html.LabelFor(c => c.UserName)</td>
                         <td>
-                            @Html.TextBoxFor(c => c.UserName, new { @class = "span11", @style = "width:50%;height: 30px;", @value = "" })
+                            @Html.TextBoxFor(c => c.UserName, new { @class = "span11", @style = "width:50%;height: 30px;" })
+                            <span style="color:red;"> @Html.ValidationMessage("UserName")</span>
                         </td>
                     </tr>
                     <tr class="even gradeA">
                         <td>@Html.LabelFor(c => c.Password)</td>
                         <td>
-                            @Html.PasswordFor(c => c.Password, new { @class = "span11", @style = "width:50%;height: 30px;" })
+                            @Html.PasswordFor(c => c.Password, new { @class = "span11", @style = "width:50%;height: 30px;" }) 
+                            <span style="color:red;"> @Html.ValidationMessage("Password")</span>
                         </td>
                     </tr>
                     <tr class="even gradeA">
                         <td>确认密码</td>
                         <td>
-                            @Html.Password("pass", null, new { @class = "span11", @style = "width:50%;height: 30px;" })
+                            @Html.PasswordFor(c=>c.PasswordTwo, new { @class = "span11", @style = "width:50%;height: 30px;" })
+                            <span style="color:red;"> @Html.ValidationMessage("PasswordTwo")</span>
                         </td>
                     </tr>
                     <tr class="odd gradeA">
@@ -49,8 +52,7 @@
                         </td>
                     </tr> 
                 </tbody>
-            </table>
-            <span>@Html.ValidationSummary()</span>
+            </table> 
         }
     </div>
 </div>

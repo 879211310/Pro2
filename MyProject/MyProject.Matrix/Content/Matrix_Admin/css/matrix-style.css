@@ -93,11 +93,12 @@ hr{ border-top-color:#dadada;}
 
 /* Top user navigation */
 #user-nav {
-	position: absolute;
-	left: 220px;
+	position: absolute; 
 	top:0px;
 	z-index: 20;
 	margin: 0;
+    top: 5px;
+    right: 10px; 
 }
 #user-nav > ul {
 	margin: 0;
@@ -117,7 +118,7 @@ hr{ border-top-color:#dadada;}
 	font-size: 11px;
 }
 #user-nav > ul > li > a:hover, #user-nav > ul > li.open > a {
-	color: #ffffff;  background:#000;
+	color: #ffffff;  background:#27a9e3;
 }
 #user-nav > ul > li > a > i, #sidebar li a i {
 	opacity: .5; 

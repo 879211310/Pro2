@@ -23,6 +23,12 @@ namespace MyProject.Matrix.Controllers.AdminUsers.ViewModels
         public string Password { get; set; }
 
         /// <summary>
+        /// 确认密码
+        /// </summary>
+        [Display(Name = "确认密码"), Required(ErrorMessage = "请输入确认密码")]
+        public string PasswordTwo { get; set; } 
+
+        /// <summary>
         /// 是否锁定
         /// </summary>
         [Display(Name = "是否锁定"), Required]
