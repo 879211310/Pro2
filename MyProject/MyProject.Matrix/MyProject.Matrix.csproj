@@ -132,6 +132,8 @@
     <Compile Include="Controllers\Core\SupportFilterAttribute.cs" />
     <Compile Include="Controllers\Home\HomeController.cs" />
     <Compile Include="Controllers\Home\ViewModels\LogOnModel.cs" />
+    <Compile Include="Controllers\SqlSearch\SqlSearchController.cs" />
+    <Compile Include="Controllers\SysLog\SysLogController.cs" />
     <Compile Include="Controllers\SysManage\SysManageController.cs" />
     <Compile Include="Controllers\SysManage\ViewModels\MenuModel.cs" />
     <Compile Include="Controllers\SysManage\ViewModels\PowerModel.cs" />
@@ -354,6 +356,8 @@
     <Content Include="Views\AdminUsers\ChangePassword.cshtml" />
     <Content Include="Views\AdminUsers\List.cshtml" />
     <Content Include="Views\AdminUsers\Save.cshtml" />
+    <Content Include="Views\SqlSearch\Index.cshtml" />
+    <Content Include="Views\SysLog\IndexExt.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

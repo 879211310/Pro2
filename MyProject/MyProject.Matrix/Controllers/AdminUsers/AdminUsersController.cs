@@ -63,42 +63,44 @@ namespace MyProject.Matrix.Controllers.AdminUsers
         public ActionResult Save(SaveAdminUserModel savemodel)
         {
             ViewBag.RoleList = _adminUserRoleTask.GetAll().ToSelectList(c => c.RoleId.ToString(), c => c.RoleName);
-            if (savemodel.Password != savemodel.PasswordTwo)
+            if (savemodel.AdminUserId == null)
             {
-                ModelState.AddModelError("PasswordTwo", "密码不一致");
-            }
-            var user = _adminUserTask.GetByUserName(savemodel.UserName);
-            if (user != null)
-            {
-                ModelState.AddModelError("UserName", "用户名称已注册");
-            }
-            if(ModelState.IsValid)
-            {
-                if(savemodel.AdminUserId == null)
+                if (savemodel.Password != savemodel.PasswordTwo)
+                {
+                    ModelState.AddModelError("PasswordTwo", "密码不一致");
+                    return View(savemodel);
+                }
+                var user = _adminUserTask.GetByUserName(savemodel.UserName);
+                if (user != null)
+                {
+                    ModelState.AddModelError("UserName", "用户名称已注册");
+                    return View(savemodel);
+                }
+                if (ModelState.IsValid)
                 {
                     var model = new AdminUser
-                                    {
-                                        UserName = savemodel.UserName,
-                                        Password = CryptTools.HashPassword(savemodel.Password),
-                                        IsLock = false,
-                                        RoleId = savemodel.RoleId
-                                    };
+                    {
+                        UserName = savemodel.UserName,
+                        Password = CryptTools.HashPassword(savemodel.Password),
+                        IsLock = false,
+                        RoleId = savemodel.RoleId
+                    };
                     _adminUserTask.Add(model);
+
+                    return CloseParentBox("保存成功", "/AdminUsers/List");
                 }
-                else
-                {
-                    var model = _adminUserTask.GetById((int) savemodel.AdminUserId);
+            }
+            else
+            {
+                var model = _adminUserTask.GetById((int)savemodel.AdminUserId);
 
-                    if(model == null)
-                        return AlertMsg("参数错误", HttpContext.Request.UrlReferrer.PathAndQuery);
+                if (model == null)
+                    return AlertMsg("参数错误", HttpContext.Request.UrlReferrer.PathAndQuery);
 
-                    model.UserName = savemodel.UserName;
-                    model.Password = CryptTools.HashPassword(savemodel.Password);
-                    model.RoleId = savemodel.RoleId;
+                model.RoleId = savemodel.RoleId;
 
-                    _adminUserTask.Update(model);
-                }
-                return CloseParentBox("保存成功", "/AdminUsers/List");
+                _adminUserTask.Update(model);
+                return CloseParentBox("修改成功", "/AdminUsers/List");
             }
             return View(savemodel);
         }

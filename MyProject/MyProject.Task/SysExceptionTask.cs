@@ -1,5 +1,6 @@
 ﻿using MyProject.Core.Entities;
 using MyProject.Data.Daos;
+using MyProject.Services.MvcPager;
 using MyProject.Services.Utility;
 using System;
 using System.Collections.Generic;
@@ -58,9 +59,19 @@ namespace MyProject.Task
         /// 获取日志列表
         /// </summary>
         /// <returns></returns>
-        public List<SysException> GetList()
+        public PagedList<SysException> GetPagedList(string helpLink, int pageIndex, int pageSize)
         {
-            return _exception.GetList();
+            return _exception.GetPagedList(helpLink,pageIndex, pageSize);
+        }
+
+        /// <summary>
+        /// 获取单挑信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public SysException GetExt(int id)
+        {
+            return _exception.GetExt(id);
         }
     }
 }
