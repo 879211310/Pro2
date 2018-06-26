@@ -16,8 +16,8 @@ namespace MyProject.Controllers.SysLog
         [SupportFilter]
         public ActionResult Index()
         {
-            var list = _task.GetList();
-            ViewBag.list = "{Rows:" + JsonConvert.SerializeObject(list) + ",Total:" + list.Count + "}";  //列表
+            //var list = _task.GetList();
+            //ViewBag.list = "{Rows:" + JsonConvert.SerializeObject(list) + ",Total:" + list.Count + "}";  //列表
             return View();
         }
 

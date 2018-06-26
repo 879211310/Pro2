@@ -358,6 +358,7 @@
     <Content Include="Views\AdminUsers\Save.cshtml" />
     <Content Include="Views\SqlSearch\Index.cshtml" />
     <Content Include="Views\SysLog\IndexExt.cshtml" />
+    <Content Include="Views\SysLog\IndexLog.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
