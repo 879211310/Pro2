@@ -17,9 +17,16 @@
                         {
                             <table>
                                 <tr>
+                                     <td>链接：</td>
                                     <td style="padding-right: 15px;">
-                                        链接：@Html.TextBox("helpLink", null, new { @class = "span11" })
+                                        @Html.TextBox("helpLink", null, new { @class = "span11" })
                                     </td> 
+                                     <td>日期：</td>
+                                    <td style="padding-right: 15px;"> 
+                                        @Html.TextBox("sdate",null, new { @class="Wdate", @onfocus="WdatePicker()" , @style="width: 130px;height: 23px;"}) 
+                                             -   
+                                        @Html.TextBox("edate",null, new { @class="Wdate", @onfocus="WdatePicker()" , @style="width: 130px;height: 23px;"})
+                                    </td>
                                     <td>
                                         <input type="submit" value="查找" class="btn btn-mini" style="padding: 4px 8px;font-weight:bold;" /> 
                                         

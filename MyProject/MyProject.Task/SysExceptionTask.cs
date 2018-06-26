@@ -59,9 +59,9 @@ namespace MyProject.Task
         /// 获取日志列表
         /// </summary>
         /// <returns></returns>
-        public PagedList<SysException> GetPagedList(string helpLink, int pageIndex, int pageSize)
+        public PagedList<SysException> GetPagedList(string edate, string sdate, string helpLink, int pageIndex, int pageSize)
         {
-            return _exception.GetPagedList(helpLink,pageIndex, pageSize);
+            return _exception.GetPagedList(edate,sdate,helpLink, pageIndex, pageSize);
         }
 
         /// <summary>

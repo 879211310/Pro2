@@ -39,6 +39,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Deepleo.Weixin.SDK, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\weixinSDK\weixinSDK-master\Deepleo.Web\bin\Deepleo.Weixin.SDK.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -126,6 +130,12 @@
     <Compile Include="Controllers\AdminUsers\ViewModels\AdminUserModel.cs" />
     <Compile Include="Controllers\AdminUsers\ViewModels\ChangePasswordModel.cs" />
     <Compile Include="Controllers\AdminUsers\ViewModels\SaveAdminUserModel.cs" />
+    <Compile Include="Controllers\WeiXinMediaMessage\WeiXinMediaMessageController.cs" />
+    <Compile Include="Controllers\WeiXinReceiveMessage\WeiXinReceiveMessageController.cs" />
+    <Compile Include="Controllers\WeiXinReplyMessage\Models\WeiXinReplyMessageModel.cs" />
+    <Compile Include="Controllers\WeiXinReplyMessage\WeiXinReplyMessageController.cs" />
+    <Compile Include="Controllers\WeiXinApi\ApiController.cs" />
+    <Compile Include="Controllers\WeiXinApi\XiaoApiController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\Core\ExceptionLogAttrbute.cs" />
     <Compile Include="Controllers\Core\ExtendMvcHtml.cs" />
@@ -245,6 +255,20 @@
     <Content Include="Content\Matrix_Admin\js\matrix.wizard.js" />
     <Content Include="Content\Matrix_Admin\js\select2.min.js" />
     <Content Include="Content\Matrix_Admin\js\wysihtml5-0.3.0.js" />
+    <Content Include="Content\My97DatePicker\calendar.js" />
+    <Content Include="Content\My97DatePicker\config.js" />
+    <Content Include="Content\My97DatePicker\lang\en.js" />
+    <Content Include="Content\My97DatePicker\lang\zh-cn.js" />
+    <Content Include="Content\My97DatePicker\lang\zh-tw.js" />
+    <Content Include="Content\My97DatePicker\My97DatePicker.htm" />
+    <Content Include="Content\My97DatePicker\skin\datePicker.gif" />
+    <Content Include="Content\My97DatePicker\skin\default\datepicker.css" />
+    <Content Include="Content\My97DatePicker\skin\default\img.gif" />
+    <Content Include="Content\My97DatePicker\skin\WdatePicker.css" />
+    <Content Include="Content\My97DatePicker\skin\whyGreen\bg.jpg" />
+    <Content Include="Content\My97DatePicker\skin\whyGreen\datepicker.css" />
+    <Content Include="Content\My97DatePicker\skin\whyGreen\img.gif" />
+    <Content Include="Content\My97DatePicker\WdatePicker.js" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -359,10 +383,13 @@
     <Content Include="Views\SqlSearch\Index.cshtml" />
     <Content Include="Views\SysLog\IndexExt.cshtml" />
     <Content Include="Views\SysLog\IndexLog.cshtml" />
+    <Content Include="Views\WeiXinMediaMessage\Index.cshtml" />
+    <Content Include="Views\WeiXinMediaMessage\Save.cshtml" />
+    <Content Include="Views\WeiXinReceiveMessage\Index.cshtml" />
+    <Content Include="Views\WeiXinReplyMessage\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

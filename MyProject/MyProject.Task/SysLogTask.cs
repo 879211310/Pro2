@@ -31,9 +31,9 @@ namespace MyProject.Task
             _log.Add(data);
         }
 
-        public PagedList<SysLog> GetPagedList(int logType, int logModule, int pageIndex, int pageSize)
+        public PagedList<SysLog> GetPagedList(string edate, string sdate, int logType, int logModule, int pageIndex, int pageSize)
         {
-            return _log.GetPagedList(logType,logModule, pageIndex, pageSize);
+            return _log.GetPagedList(edate,sdate,logType, logModule, pageIndex, pageSize);
         }
 
         public SysLog GetSysLog(int id)

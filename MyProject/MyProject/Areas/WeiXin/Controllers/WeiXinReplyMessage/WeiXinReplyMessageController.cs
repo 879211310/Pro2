@@ -23,8 +23,8 @@ namespace MyProject.Areas.WeiXin.Controllers.WeiXinReplyMessage
         [SupportFilter]
         public ActionResult Index()
         {
-            var list = _message.GetList();
-            ViewBag.list = "{Rows:" + JsonConvert.SerializeObject(list) + ",Total:" + list.Count + "}";  //列表
+            //var list = _message.GetList();
+            //ViewBag.list = "{Rows:" + JsonConvert.SerializeObject(list) + ",Total:" + list.Count + "}";  //列表
             return View();
         }
 
@@ -33,14 +33,14 @@ namespace MyProject.Areas.WeiXin.Controllers.WeiXinReplyMessage
         {
             #region 初始化
             var model = new WeiXinReplyMessageModel();
-            ViewData["MsgTypeList"] = WeiXinMessageTypeEnum.image.ToSelectList();
-            ViewData["ThumbMediaIdList"] = WeiXinMessageTypeEnum.image.ToSelectList();
-            var madiaList = _mediaMessage.GetList().ToSelectList(c => c.MediaId, c => c.MediaType + "-" + c.MediaTitle);
-            madiaList.Insert(0, new SelectListItem { Text = "请选择", Value = string.Empty });
-            ViewData["MediaIdList"] = madiaList;
-            var picurlList = _mediaMessage.GetList().Where(c => c.MediaType == "image" && c.Url!=null).ToSelectList(c => c.Url, c => c.MediaType + "-" + c.MediaTitle);
-            picurlList.Insert(0, new SelectListItem { Text = "请选择", Value = string.Empty });
-            ViewData["picurlList"] = picurlList;
+            //ViewData["MsgTypeList"] = WeiXinMessageTypeEnum.image.ToSelectList();
+            //ViewData["ThumbMediaIdList"] = WeiXinMessageTypeEnum.image.ToSelectList();
+            //var madiaList = _mediaMessage.GetList().ToSelectList(c => c.MediaId, c => c.MediaType + "-" + c.MediaTitle);
+            //madiaList.Insert(0, new SelectListItem { Text = "请选择", Value = string.Empty });
+            //ViewData["MediaIdList"] = madiaList;
+            //var picurlList = _mediaMessage.GetList().Where(c => c.MediaType == "image" && c.Url!=null).ToSelectList(c => c.Url, c => c.MediaType + "-" + c.MediaTitle);
+            //picurlList.Insert(0, new SelectListItem { Text = "请选择", Value = string.Empty });
+            //ViewData["picurlList"] = picurlList;
             model.MsgType = "1";
             #endregion
             if (id !=null)
@@ -157,14 +157,14 @@ namespace MyProject.Areas.WeiXin.Controllers.WeiXinReplyMessage
             }
 
             #region 初始化
-            ViewData["MsgTypeList"] = WeiXinMessageTypeEnum.image.ToSelectList();
-            ViewData["ThumbMediaIdList"] = WeiXinMessageTypeEnum.image.ToSelectList();
-            var madiaList = _mediaMessage.GetList().ToSelectList(c => c.MediaId, c => c.MediaType + "-" + c.MediaTitle);
-            madiaList.Insert(0, new SelectListItem { Text = "请选择", Value = string.Empty });
-            ViewData["MediaIdList"] = madiaList;
-            var picurlList = _mediaMessage.GetList().Where(c => c.MediaType == "image").ToSelectList(c => c.Url, c => c.MediaType + "-" + c.MediaTitle);
-            picurlList.Insert(0, new SelectListItem { Text = "请选择", Value = string.Empty });
-            ViewData["picurlList"] = picurlList;   
+            //ViewData["MsgTypeList"] = WeiXinMessageTypeEnum.image.ToSelectList();
+            //ViewData["ThumbMediaIdList"] = WeiXinMessageTypeEnum.image.ToSelectList();
+            //var madiaList = _mediaMessage.GetList().ToSelectList(c => c.MediaId, c => c.MediaType + "-" + c.MediaTitle);
+            //madiaList.Insert(0, new SelectListItem { Text = "请选择", Value = string.Empty });
+            //ViewData["MediaIdList"] = madiaList;
+            //var picurlList = _mediaMessage.GetList().Where(c => c.MediaType == "image").ToSelectList(c => c.Url, c => c.MediaType + "-" + c.MediaTitle);
+            //picurlList.Insert(0, new SelectListItem { Text = "请选择", Value = string.Empty });
+            //ViewData["picurlList"] = picurlList;   
             #endregion
 
             return View(model);

@@ -1,6 +1,7 @@
 ﻿using MyProject.Core.Entities;
 using MyProject.Core.Enums;
 using MyProject.Data.Daos;
+using MyProject.Services.MvcPager;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,10 +25,12 @@ namespace MyProject.Task
             return _dao.GetById(id);
         }
 
-        public List<WeiXinReplyMessage> GetList()
+
+        public PagedList<WeiXinReplyMessage> GetPagedList(int pageIndex, int pageSize)
         {
-            return _dao.GetList();
+            return _dao.GetPagedList(pageIndex, pageSize);
         }
+
         public void Add(WeiXinReplyMessage info)
         {
             _dao.Add(info);
