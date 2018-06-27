@@ -12,9 +12,9 @@ using System.Web;
 using System.Web.Mvc;
 using Tencent;
 
-namespace MyProject.Matrix.Controllers.WxApi
+namespace MyProject.Matrix.Controllers.WeiXinApi
 {
-    public class ApiController : Controller
+    public class WeiXinApiController : Controller
     {
         private readonly WeiXinSdkTask _sdk = new WeiXinSdkTask();
 

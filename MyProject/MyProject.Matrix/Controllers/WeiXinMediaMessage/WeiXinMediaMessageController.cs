@@ -86,7 +86,7 @@ namespace MyProject.Matrix.Controllers.WeiXinMediaMessage
                 Url = result.url
             };
             _message.Add(info);
-            return CloseParentBox("操作成功", "/weixin/WeiXinMediaMessage/index");
+            return CloseParentBox("操作成功", "/WeiXinMediaMessage/index");
 
         }
 

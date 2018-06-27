@@ -77,6 +77,11 @@ namespace MyProject.Core.Entities
         /// <summary>
         /// Creater
         /// </summary>		 
-        public string Creater { get; set; }        
+        public string Creater { get; set; }
+
+        /// <summary>
+        /// 用于测试，填写后就能够发送给这个openid下
+        /// </summary>		 
+        public string Openid { get; set; } 
     }
 }

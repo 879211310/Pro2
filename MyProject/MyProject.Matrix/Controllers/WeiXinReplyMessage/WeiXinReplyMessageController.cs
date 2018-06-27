@@ -12,6 +12,8 @@ using MyProject.Services.Extensions;
 using MyProject.Controllers;
 using MyProject.Matrix.Controllers.Core;
 using MyProject.Matrix.Controllers.WeiXinReplyMessage.Models;
+using Deepleo.Weixin.SDK;
+using Deepleo.Weixin.SDK.Entities;
 
 namespace MyProject.Matrix.Controllers.WeiXinReplyMessage
 {
@@ -19,6 +21,7 @@ namespace MyProject.Matrix.Controllers.WeiXinReplyMessage
     {
         private readonly WeiXinReplyMessageTask _message = new WeiXinReplyMessageTask();
         private readonly WeiXinMediaMessageTask _mediaMessage = new WeiXinMediaMessageTask();
+        private readonly WeiXinSdkTask _sdk = new WeiXinSdkTask();
 
         [SupportFilter]
         public ActionResult Index(int pageIndex = 1, int pageSize = 15)
@@ -99,8 +102,45 @@ namespace MyProject.Matrix.Controllers.WeiXinReplyMessage
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult Save(WeiXinReplyMessageModel model)
-        { 
+        {
+            #region 校验
+            switch (model.MsgType)
+            {
+                case "1":
+                    if (string.IsNullOrEmpty(model.Content))
+                    {
+                        ModelState.AddModelError("Content", "回复内容不能为空");
+                    }
+                    break;
+                case "2":
+                case "3":
+                case "4":
+                    if (string.IsNullOrEmpty(model.MediaId))
+                    {
+                        ModelState.AddModelError("Content", "请选择媒体ID");
+                    }
+                    break;
+                case "5":
+                    if (string.IsNullOrEmpty(model.ThumbMediaId))
+                    {
+                        ModelState.AddModelError("Content", "请选择缩略图的媒体id");
+                    }
+                    break;
+                case "6":
+                    if (model.ArticleCount <= 0)
+                    {
+                        ModelState.AddModelError("Content", "请填写图文消息个数");
+                    }
+                    if (string.IsNullOrEmpty(model.Articles))
+                    {
+
+                        ModelState.AddModelError("Content", "请填写多条图文消息信息");
+                    }
+                    break;
+            } 
+            #endregion
             if (ModelState.IsValid)
             {
                 #region 图文信息特殊处理 
@@ -113,6 +153,7 @@ namespace MyProject.Matrix.Controllers.WeiXinReplyMessage
                 {
                     var info = new MyProject.Core.Entities.WeiXinReplyMessage
                     {
+                        Openid=model.Openid,
                         Creater = GetCurrentAdmin(),
                         CreateTime = DateTime.Now, 
                         MatchKey=model.MatchKey,
@@ -136,6 +177,7 @@ namespace MyProject.Matrix.Controllers.WeiXinReplyMessage
                     var info = _message.GetById((int)model.Id);
                     if (info != null)
                     {
+                        info.Openid = model.Openid;
                         info.Creater = GetCurrentAdmin();
                         info.MatchKey=model.MatchKey;
                         info.MsgType=model.MsgType;
@@ -153,7 +195,7 @@ namespace MyProject.Matrix.Controllers.WeiXinReplyMessage
                         _message.Update(info);
                     }
                 }
-                return CloseParentBox("操作成功", "/weixin/WeiXinReplyMessage/index");
+                return CloseParentBox("操作成功", "/WeiXinReplyMessage/index");
             }
 
             #region 初始化
@@ -175,6 +217,63 @@ namespace MyProject.Matrix.Controllers.WeiXinReplyMessage
         public void Delete(int? id)
         {
             _message.DeleteById(Convert.ToInt32(id)); 
+        }
+
+        [HttpPost]
+        public ActionResult GetById(int id)
+        {
+            return Json(_message.GetById(id));
+        }
+
+        //发送客服消息
+        public ActionResult SendMessage(int id)
+        {
+            var reply = _message.GetById(id); 
+            if (reply == null || string.IsNullOrEmpty(reply.Openid))
+            {
+                return Json("数据异常或者openid为空");
+            }
+            var openId = reply.Openid;
+            var result = false ;
+            switch (Convert.ToInt32(reply.MsgType))
+            {
+                case (int)WeiXinMessageTypeEnum.text:
+                    result = ReplayActiveMessageAPI.RepayText(_sdk.AccountToken(),openId, reply.Content);
+                    break;
+                case (int)WeiXinMessageTypeEnum.image:
+                    result = ReplayActiveMessageAPI.RepayImage(_sdk.AccountToken(),openId, reply.MediaId);
+                    break;
+                case (int)WeiXinMessageTypeEnum.video:
+                    result = ReplayActiveMessageAPI.RepayVedio(_sdk.AccountToken(),openId, reply.MediaId,reply.ThumbMediaId, reply.Title, reply.Description);
+                    break;
+                case (int)WeiXinMessageTypeEnum.voice:
+                    result = ReplayActiveMessageAPI.RepayVoice(_sdk.AccountToken(),openId, reply.MediaId);
+                    break;
+                case (int)WeiXinMessageTypeEnum.music:
+                    result = ReplayActiveMessageAPI.RepayMusic(_sdk.AccountToken() ,openId, reply.Title, reply.Description, reply.MusicURL, reply.HQMusicUrl, reply.ThumbMediaId);
+                    break;
+                case (int)WeiXinMessageTypeEnum.news:
+                    var weiXinNewList = new List<WeixinNews>();
+                    var titles = reply.Title.Split(';');
+                    var descriptions = reply.Description.Split(';');
+                    var picurls = reply.PicUrl.Split(';');
+                    var urls = reply.Url.Split(';');
+                    for (int i = 0; i < reply.ArticleCount; i++)
+                    {
+                        var weiXinNew = new WeixinNews
+                        {
+                            title = titles[i],
+                            description = descriptions[i],
+                            picurl = picurls[i],
+                            url = urls[i]
+                        };
+                        weiXinNewList.Add(weiXinNew);
+                    }
+
+                    result = ReplayActiveMessageAPI.RepayNews(_sdk.AccountToken(),openId, weiXinNewList);
+                    break;
+            }
+            return Json(result);
         }
 
     }
