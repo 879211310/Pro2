@@ -1,4 +1,5 @@
 ﻿using MyProject.Core.Entities;
+using MyProject.Services.MvcPager;
 using MyProject.Services.ORM;
 using System;
 using System.Collections.Generic;
@@ -10,11 +11,11 @@ namespace MyProject.Data.Daos
 {
     [DbFactory("MyP")]
     public class WeiXinReplyMessageDao : BaseDao<WeiXinReplyMessage>
-    {
-        public List<WeiXinReplyMessage> GetList()
+    { 
+        public PagedList<WeiXinReplyMessage> GetPagedList(int pageIndex, int pageSize)
         {
             var sql = Sql.Builder.OrderBy("CreateTime desc");
-            return Query<WeiXinReplyMessage>(sql).ToList();
+            return PagedList<WeiXinReplyMessage>(pageIndex, pageSize, sql);
         }
 
         public WeiXinReplyMessage GetById(int id)

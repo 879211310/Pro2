@@ -1,5 +1,6 @@
 ﻿using MyProject.Core.Entities;
 using MyProject.Data.Daos;
+using MyProject.Services.MvcPager;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,11 @@ namespace MyProject.Task
         public WeiXinMediaMessage GetById(int id)
         {
             return _dao.GetById(id);
+        }
+
+        public PagedList<WeiXinMediaMessage> GetPagedList(int pageIndex, int pageSize)
+        {
+            return _dao.GetPagedList(pageIndex,pageSize);
         }
 
         public List<WeiXinMediaMessage> GetList()

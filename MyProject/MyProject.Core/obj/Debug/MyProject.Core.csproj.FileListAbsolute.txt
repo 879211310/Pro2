@@ -14,14 +14,6 @@ F:\zl\Project\MyProject2\MyProject\MyProject.Core\bin\Debug\MyProject.Services.p
 F:\zl\Project\MyProject2\MyProject\MyProject.Core\obj\Debug\MyProject.Core.csprojResolveAssemblyReference.cache
 F:\zl\Project\MyProject2\MyProject\MyProject.Core\obj\Debug\MyProject.Core.dll
 F:\zl\Project\MyProject2\MyProject\MyProject.Core\obj\Debug\MyProject.Core.pdb
-F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Core\bin\Debug\MyProject.Core.dll
-F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Core\bin\Debug\MyProject.Core.pdb
-F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Core\bin\Debug\MyProject.Services.dll
-F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Core\bin\Debug\EmitMapper.dll
-F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Core\bin\Debug\MyProject.Services.pdb
-F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Core\obj\Debug\MyProject.Core.csprojResolveAssemblyReference.cache
-F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Core\obj\Debug\MyProject.Core.dll
-F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Core\obj\Debug\MyProject.Core.pdb
 E:\U盘\17Pro\Pro2\MyProject\MyProject.Core\bin\Debug\MyProject.Core.dll
 E:\U盘\17Pro\Pro2\MyProject\MyProject.Core\bin\Debug\MyProject.Core.pdb
 E:\U盘\17Pro\Pro2\MyProject\MyProject.Core\bin\Debug\MyProject.Services.dll
@@ -30,3 +22,11 @@ E:\U盘\17Pro\Pro2\MyProject\MyProject.Core\bin\Debug\MyProject.Services.pdb
 E:\U盘\17Pro\Pro2\MyProject\MyProject.Core\obj\Debug\MyProject.Core.csprojResolveAssemblyReference.cache
 E:\U盘\17Pro\Pro2\MyProject\MyProject.Core\obj\Debug\MyProject.Core.dll
 E:\U盘\17Pro\Pro2\MyProject\MyProject.Core\obj\Debug\MyProject.Core.pdb
+F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Core\bin\Debug\MyProject.Core.dll
+F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Core\bin\Debug\MyProject.Core.pdb
+F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Core\bin\Debug\MyProject.Services.dll
+F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Core\bin\Debug\EmitMapper.dll
+F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Core\bin\Debug\MyProject.Services.pdb
+F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Core\obj\Debug\MyProject.Core.csprojResolveAssemblyReference.cache
+F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Core\obj\Debug\MyProject.Core.dll
+F:\zl\Project\MyProject2\Pro2\MyProject\MyProject.Core\obj\Debug\MyProject.Core.pdb

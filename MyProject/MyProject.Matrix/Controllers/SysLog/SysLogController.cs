@@ -17,12 +17,18 @@ namespace MyProject.Matrix.Controllers.SysLog
         private readonly SysExceptionTask _extTask = new SysExceptionTask();
 
         [SupportFilter]
-        public ActionResult IndexLog(int logType=0, int logModule=0, int pageIndex = 1, int pageSize = 15)
+        public ActionResult IndexLog(string edate, string sdate, int logType = 0, int logModule = 0, int pageIndex = 1, int pageSize = 15)
         {
 
-            ViewData["LogTypeList"] = LogTypeEnum.Add.ToSelectList();
-            ViewData["LogModuleList"] = LogModuleEnum.Land.ToSelectList();
-            var model = _logTask.GetPagedList(logType,logModule, pageIndex, pageSize);
+            var logtype = LogTypeEnum.Add.ToSelectList();
+            logtype.Insert(0, new SelectListItem { Text="全部",Value="0"});
+            ViewData["LogTypeList"] = logtype;
+            var logModul = LogModuleEnum.Land.ToSelectList();
+            logModul.Insert(0, new SelectListItem { Text = "全部", Value = "0" });
+            ViewData["LogModuleList"] = logModul;
+            ViewData["sdate"] = sdate;
+            ViewData["edate"] = edate;
+            var model = _logTask.GetPagedList(edate,sdate,logType,logModule, pageIndex, pageSize);
             return View(model);
         }
         [HttpPost]
@@ -34,9 +40,9 @@ namespace MyProject.Matrix.Controllers.SysLog
        
 
         [SupportFilter]
-        public ActionResult IndexExt(string helpLink,int pageIndex = 1, int pageSize = 15)
+        public ActionResult IndexExt(string edate, string sdate, string helpLink, int pageIndex = 1, int pageSize = 15)
         {
-            var model = _extTask.GetPagedList(helpLink,pageIndex, pageSize);
+            var model = _extTask.GetPagedList(edate,sdate,helpLink, pageIndex, pageSize);
             return View(model);
         }
 

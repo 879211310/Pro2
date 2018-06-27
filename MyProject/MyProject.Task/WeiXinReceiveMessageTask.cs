@@ -1,5 +1,6 @@
 ﻿using MyProject.Core.Entities;
 using MyProject.Data.Daos;
+using MyProject.Services.MvcPager;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,10 +18,9 @@ namespace MyProject.Task
             _dao.Add(model);
         }
 
-        public List<WeiXinReceiveMessage> GetList()
+        public PagedList<WeiXinReceiveMessage> GetPagedList(string fields, string fieldValue, string sdate, string edate, string ContentValue, bool IsLike, int pageIndex, int pageSize)
         {
-            return _dao.GetList();
+            return _dao.GetPagedList(fields,fieldValue,sdate,edate,ContentValue,IsLike, pageIndex, pageSize);
         }
-
     }
 }

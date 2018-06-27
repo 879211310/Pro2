@@ -25,8 +25,8 @@ namespace MyProject.Areas.WeiXin.Controllers.WeiXinMediaMessage
         [SupportFilter]
         public ActionResult Index()
         {
-            var list = _message.GetList();
-            ViewBag.list = "{Rows:" + JsonConvert.SerializeObject(list) + ",Total:" + list.Count + "}";  //列表
+            //var list = _message.GetList();
+            //ViewBag.list = "{Rows:" + JsonConvert.SerializeObject(list) + ",Total:" + list.Count + "}";  //列表
             return View();
         }
         [SupportFilter]

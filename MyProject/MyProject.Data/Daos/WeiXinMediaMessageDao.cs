@@ -1,4 +1,5 @@
 ﻿using MyProject.Core.Entities;
+using MyProject.Services.MvcPager;
 using MyProject.Services.ORM;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,12 @@ namespace MyProject.Data.Daos
     [DbFactory("MyP")]
     public class WeiXinMediaMessageDao : BaseDao<WeiXinMediaMessage>
     {
+        public PagedList<WeiXinMediaMessage> GetPagedList(int pageIndex,int pageSize)
+        {
+            var sql = Sql.Builder.OrderBy("CreateTime desc");
+            return PagedList<WeiXinMediaMessage>(pageIndex, pageSize, sql);
+        }
+
         public List<WeiXinMediaMessage> GetList()
         {
             var sql = Sql.Builder.OrderBy("CreateTime desc");
