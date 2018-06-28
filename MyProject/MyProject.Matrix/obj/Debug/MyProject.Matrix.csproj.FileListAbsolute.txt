@@ -20,7 +20,6 @@ E:\U盘\17Pro\Pro2\MyProject\MyProject.Matrix\bin\System.Web.WebPages.Razor.dll
 E:\U盘\17Pro\Pro2\MyProject\MyProject.Matrix\bin\WebGrease.dll
 E:\U盘\17Pro\Pro2\MyProject\MyProject.Matrix\bin\EmitMapper.dll
 E:\U盘\17Pro\Pro2\MyProject\MyProject.Matrix\bin\MyProject.Data.dll
-E:\U盘\17Pro\Pro2\MyProject\MyProject.Matrix\bin\Deepleo.Weixin.SDK.dll
 E:\U盘\17Pro\Pro2\MyProject\MyProject.Matrix\bin\MyProject.Core.pdb
 E:\U盘\17Pro\Pro2\MyProject\MyProject.Matrix\bin\MyProject.Services.pdb
 E:\U盘\17Pro\Pro2\MyProject\MyProject.Matrix\bin\MyProject.Task.pdb

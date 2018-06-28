@@ -177,6 +177,9 @@
                 var td_MenuName = $("#td_MenuName_opt").val();
                 var td_LinkUrl = $("#td_LinkUrl_opt").val();
                 var td_SortOrder = $("#td_SortOrder_opt").val();
+                if (IsAdd) {
+                    menuid = 0;
+                }
                 $.ajax({
                     type: "POST",
                     url: "/SysManage/SaveMenu",
