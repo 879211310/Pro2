@@ -62,6 +62,7 @@
     <Compile Include="WeiXinSdkTask.cs" />
     <Compile Include="WeiXinReplyMessageTask.cs" />
     <Compile Include="WeiXinReceiveMessageTask.cs" />
+    <Compile Include="WeiXinUserTask.cs" />
     <Compile Include="XiaoWeiXinSdkTask.cs" />
   </ItemGroup>
   <ItemGroup>

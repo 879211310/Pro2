@@ -13,7 +13,7 @@ using System.Web.Mvc;
 using System.Web.Security;
 using Tencent;
 
-namespace MyProject.Matrix.Controllers.WeiXinApi
+namespace MyProject.Matrix.Controllers.Api
 {
     public class XiaoApiController : Controller
     {

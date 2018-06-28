@@ -50,6 +50,7 @@
     <Compile Include="Daos\WeiXinMediaMessageDao.cs" />
     <Compile Include="Daos\WeiXinReplyMessageDao.cs" />
     <Compile Include="Daos\WeiXinReceiveMessageDao.cs" />
+    <Compile Include="Daos\WeiXinUserDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
