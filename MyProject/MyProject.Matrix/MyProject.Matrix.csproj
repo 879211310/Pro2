@@ -134,8 +134,8 @@
     <Compile Include="Controllers\WeiXinReceiveMessage\WeiXinReceiveMessageController.cs" />
     <Compile Include="Controllers\WeiXinReplyMessage\Models\WeiXinReplyMessageModel.cs" />
     <Compile Include="Controllers\WeiXinReplyMessage\WeiXinReplyMessageController.cs" />
-    <Compile Include="Controllers\WeiXinApi\WeiXinApiController.cs" />
-    <Compile Include="Controllers\WeiXinApi\XiaoApiController.cs" />
+    <Compile Include="Controllers\Api\WxApiController.cs" />
+    <Compile Include="Controllers\Api\XiaoApiController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\Core\ExceptionLogAttrbute.cs" />
     <Compile Include="Controllers\Core\ExtendMvcHtml.cs" />

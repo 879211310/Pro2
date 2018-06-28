@@ -57,6 +57,7 @@
     <Compile Include="Entities\WeiXinMediaMessage.cs" />
     <Compile Include="Entities\WeiXinReplyMessage.cs" />
     <Compile Include="Entities\WeiXinReceiveMessage.cs" />
+    <Compile Include="Entities\WeiXinUser.cs" />
     <Compile Include="Enums\LogTypeEnum.cs" />
     <Compile Include="Enums\WeiXinMediaMessageEnum.cs" />
     <Compile Include="Enums\WeiXinMessageTypeEnum.cs" />

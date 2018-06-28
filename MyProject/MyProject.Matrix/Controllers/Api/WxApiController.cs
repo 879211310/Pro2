@@ -2,19 +2,21 @@
 using MyProject.Controllers;
 using MyProject.Core.Entities;
 using MyProject.Core.Enum;
-using MyProject.Services.Utility;
+
 using MyProject.Task;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using Tencent;
 
-namespace MyProject.Matrix.Controllers.WeiXinApi
+namespace MyProject.Matrix.Controllers.Api
 {
-    public class WeiXinApiController : Controller
+    public class WxApiController : Controller
     {
         private readonly WeiXinSdkTask _sdk = new WeiXinSdkTask();
 

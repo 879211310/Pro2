@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 namespace MyProject.Data.Daos
 {
     [DbFactory("MyP")]
-    public class WeiXinReceiveMessageDao : BaseDao<WeiXinReceiveMessage>
+    public class WeiXinUserDao : BaseDao<WeiXinUser>
     {
-        public PagedList<WeiXinReceiveMessage> GetPagedList(string fields, string fieldValue, string sdate, string edate, string ContentValue, bool IsLike, int pageIndex, int pageSize)
+        public PagedList<WeiXinUser> GetPagedList(string fields, string fieldValue, string sdate, string edate, bool IsLike, int pageIndex, int pageSize)
         {
             var sql = Sql.Builder;
             if (!string.IsNullOrEmpty(fields))
@@ -22,28 +22,24 @@ namespace MyProject.Data.Daos
                     sql.Where(fields + "='" + fieldValue + "' ");
                 }
                 else
-                { 
+                {
                     sql.Where(fields + " like'%" + fieldValue + "%' ");
                 }
-            }
-            if (!string.IsNullOrEmpty(ContentValue))
-            {
-                sql.Where("Content like'%"+ContentValue+"%'");
-            }
+            } 
             if (!string.IsNullOrEmpty(sdate) && string.IsNullOrEmpty(edate))
             {
-                sql.Where("CreateDate>=@0", sdate);
+                sql.Where("createtime>=@0", sdate);
             }
             if (string.IsNullOrEmpty(sdate) && !string.IsNullOrEmpty(edate))
             {
-                sql.Where("CreateDate<@0", edate);
+                sql.Where("createtime<@0", edate);
             }
             if (!string.IsNullOrEmpty(sdate) && !string.IsNullOrEmpty(edate))
             {
-                sql.Where("CreateDate>=@0 and CreateDate<@1", sdate, edate);
+                sql.Where("createtime>=@0 and createtime<@1", sdate, edate);
             }
-            sql.OrderBy("CreateDate desc");
-            return PagedList<WeiXinReceiveMessage>(pageIndex, pageSize, sql);
+            sql.OrderBy("createtime desc");
+            return PagedList<WeiXinUser>(pageIndex, pageSize, sql);
         }
     }
 }

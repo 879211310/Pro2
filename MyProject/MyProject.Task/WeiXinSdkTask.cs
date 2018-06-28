@@ -14,6 +14,7 @@ using System.Web.Mvc;
 using System.Web;
 using MyProject.Core.Dtos;
 using Newtonsoft.Json;
+using MyProject.Services.Mappers;
 
 namespace MyProject.Task
 {
@@ -27,7 +28,8 @@ namespace MyProject.Task
         public static string Token = "zlwx2015";
         public static string domain = ResultHelper.GetBaseUrl();//域名
         private readonly WeiXinReceiveMessageTask _receiveMessage = new WeiXinReceiveMessageTask();
-        private readonly WeiXinReplyMessageTask _replyMessage = new WeiXinReplyMessageTask();
+        private readonly WeiXinReplyMessageTask _replyMessage = new WeiXinReplyMessageTask(); 
+        private readonly WeiXinUserTask _userTask = new WeiXinUserTask();
 
         /// <summary>
         /// 说明：带TODO字眼的代码段，需要开发者自行按照自己的业务逻辑实现
@@ -178,7 +180,8 @@ namespace MyProject.Task
                             #region 首次关注
 
                             //TODO: 获取用户基本信息后，将用户信息存储在本地。
-                            //var weixinInfo = UserAdminAPI.GetInfo(token, openId);//注意：订阅号没有此权限
+                            var weixinInfo = UserAdminAPI.GetInfo(AccountToken(), openId);//注意：订阅号没有此权限
+                            _userTask.AddUser(EntityMapper.Map<dynamic, WeiXinUser>(weixinInfo));//保存用户关注数据
 
                             if (!string.IsNullOrEmpty(eventKey))
                             {
