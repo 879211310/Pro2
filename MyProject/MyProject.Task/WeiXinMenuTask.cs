@@ -17,6 +17,21 @@ namespace MyProject.Task
             _dao.Add(model);
         }
 
+        public void Update(WeiXinMenu model)
+        {
+            _dao.Update(model);
+        }
+
+        public void Delete(int menuId)
+        {
+            _dao.Delete(menuId);
+        }
+
+        public WeiXinMenu GetById(int menuId)
+        {
+            return _dao.GetById(menuId);
+        }
+
         public List<WeiXinMenu> GetList()
         {
             return _dao.GetList();

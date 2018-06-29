@@ -9,57 +9,243 @@
 }
 @using MyProject.Matrix.Controllers.Core;
  
-<body style="background-color:#F9F9F9;margin-top:0px;"> 
-<div class="widget-box" style="margin-top:0;">
-          <div class="widget-title"> 
+<body style="background-color: #F9F9F9; margin-top: 0px;">
+    <div class="widget-box" style="margin-top: 0;">
+        <div class="widget-title">
             <h5>微信菜单</h5>
-          </div>
-          <div class="widget-content nopadding"> 
-                  <div>
-                    <div class="btn-group dropup">
-        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">原始
-            <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" role="menu">
-            <li>
-                <a href="#">功能</a>
-            </li>
-            <li>
-                <a href="#">另一个功能</a>
-            </li>
-            <li>
-                <a href="#">其他</a>
-            </li>
-            <li class="divider"></li>
-            <li>
-                <a href="#">分离的链接</a>
-            </li>
-        </ul>
+        </div>
+        <div class="widget-content nopadding">
+            <div id="menu" style="float:left;">
+                <div class="btn-group dropup" style="margin-top: 200px;">
+                    <button id="1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style="width: 120px;">
+                        @(ViewBag.name_1)
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" style="min-width: 120px;">
+                        <li>
+                            <a id="15">@(ViewBag.name_15)</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a id="14">@(ViewBag.name_14)</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a id="13">@(ViewBag.name_13)</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a id="12">@(ViewBag.name_12)</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a id="11">@(ViewBag.name_11)</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="btn-group dropup" style="margin-top: 200px;">
+                    <button id="2" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style="width: 120px;">
+                       @(ViewBag.name_2)
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" style="min-width: 120px;">
+                        <li>
+                            <a id="25">@(ViewBag.name_25)</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a id="24">@(ViewBag.name_24)</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a id="23">@(ViewBag.name_23)</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a id="22">@(ViewBag.name_22)</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a id="21">@(ViewBag.name_21)</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="btn-group dropup" style="margin-top: 200px;">
+                    <button id="3" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style="width: 120px;">
+                        @(ViewBag.name_3)
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" style="min-width: 120px;">
+                        <li>
+                            <a id="35">@(ViewBag.name_35)</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a id="34">@(ViewBag.name_34)</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a id="33">@(ViewBag.name_33)</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a id="32">@(ViewBag.name_32)</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a id="31">@(ViewBag.name_31)</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="opt">
+                <div style="width: 40%; float: left; margin: 20px 80px">
+                    <button class="btn btn-primary" id="btn_add">添加/修改</button> 
+                    <button class="btn btn-danger" id="btn_del">删除</button>
+                    @*<div class="widget-box" style="margin-top: 0; display: block;" id="div_opt_1">
+                        <div class="widget-title">
+                            <h5>菜单信息</h5>
+                        </div>
+                        <div class="widget-content nopadding">
+                            <table class="table table-bordered table-striped">
+                                <tbody>
+                                    <tr class="even gradeC">
+                                        <td style="width: 150px;">菜单名称</td>
+                                        <td id="td_name"></td>
+                                    </tr>
+                                    <tr class="even gradeA">
+                                        <td>类型</td>
+                                        <td id="td_type"></td>
+                                    </tr>
+                                    <tr class="odd gradeA">
+                                        <td>KEY值</td>
+                                        <td id="td_key"></td>
+                                    </tr>
+                                    <tr class="odd gradeX">
+                                        <td>链接</td>
+                                        <td id="td_url"></td>
+                                    </tr>
+                                      <tr class="odd gradeX">
+                                        <td>媒体Id</td>
+                                        <td id="td_media_id"></td>
+                                    </tr>
+                                      <tr class="odd gradeX">
+                                        <td>小程序的appid</td>
+                                        <td id="td_appid"></td>
+                                    </tr>
+                                      <tr class="odd gradeX">
+                                        <td>小程序的页面路径</td>
+                                        <td id="td_pagepath"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>*@
+                    <div class="widget-box" style="margin-top: 0; " id="div_opt_2">
+                        <div class="widget-title">
+                            <h5 id="title_opt"></h5>
+                        </div>
+                        <div class="widget-content nopadding">
+                            <table class="table table-bordered table-striped">
+                                <tbody>
+                                    <tr class="even gradeC">
+                                        <td style="width: 150px;">类型</td>
+                                        <td>
+                                            <div class="controls">
+                                                <select id="td_ParentId_opt">  
+                                                    <option value="click">点击</option> 
+                                                    <option value="view">跳转</option> 
+                                                    <option value="miniprogram">小程序</option>
+                                                    <option value="scancode_push">扫码推事件</option> 
+                                                    <option value="scancode_waitmsg">扫码带提示</option> 
+                                                    <option value="pic_sysphoto">系统拍照发图</option> 
+                                                    <option value="pic_photo_or_album">拍照或者相册发图</option> 
+                                                    <option value="pic_weixin">微信相册发图</option> 
+                                                    <option value="location_select">发送位置</option> 
+                                                    <option value="media_id">图片</option> 
+                                                    <option value="view_limited">图文消息</option> 
+                                                </select>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr class="even gradeA">
+                                        <td>菜单名称</td>
+                                        <td>
+                                            <input type="text" class="span11" placeholder="菜单名称" id="td_MenuName_opt" style="width: 50%; height: 30px;" />
+                                        </td>
+                                    </tr>
+                                    <tr class="even gradeA">
+                                        <td>菜单Url</td>
+                                        <td>
+                                            <input type="text" class="span11" placeholder="菜单Url" id="td_LinkUrl_opt" style="width: 80%; height: 30px;" />
+                                        </td>
+                                    </tr>
+                                    <tr class="odd gradeA">
+                                        <td>排序</td>
+                                        <td>
+                                            <input type="text" class="span11" placeholder="排序" id="td_SortOrder_opt" style="width: 20%; height: 30px;" />
+                                        </td>
+                                    </tr>
+                                    <tr class="odd gradeA">
+                                        <td></td>
+                                        <td>
+                                            <button type="submit" class="btn btn-success" id="td_submit_opt">保存</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-                      <div class="btn-group dropup">
-        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">原始
-            <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" role="menu">
-            <li>
-                <a href="#">功能</a>
-            </li>
-            <li>
-                <a href="#">另一个功能</a>
-            </li>
-            <li>
-                <a href="#">其他</a>
-            </li>
-            <li class="divider"></li>
-            <li>
-                <a href="#">分离的链接</a>
-            </li>
-        </ul>
-    </div>
-                  </div>  
-               <div>
-                    
-                  </div>  
-          </div> 
-        </div> 
-</body>   
+</body>
+
+<script type="text/javascript">
+    var menuid = 0;//菜单Id
+    $(function () {
+        $("#menu button").on("click", function () {//点击按钮拿menuid
+            menuid = $(this).attr("id");
+            $("#title_opt").html("选择的菜单："+$(this).html());
+            if (parseInt(menuid) > 1) {
+                var html = $("#" + (parseInt(menuid) - 1)).html();
+                console.log(html);
+                if (html.indexOf("菜单") != -1) {
+                    alert("请按菜单从左到右，从下到上的顺序操作菜单！");
+                    return;
+                }
+            }
+            Initialize(menuid);
+        });
+        $("#menu a").on("click", function () {//点击a标签拿menuid
+            menuid = $(this).attr("id");
+            Initialize(menuid);
+        });
+    });
+
+    function Initialize(menuid) {
+        $.ajax({
+            type: "POST",
+            url: "/WeiXinMenu/GetByMenuId",//获得菜单信息
+            data: { menuId: menuid },
+            success: function (data) {
+                $("#td_name").html(data.name);
+                $("#td_type").html(data.type);
+                $("#td_key").html(data.key);
+                $("#td_url").html(data.url);
+                $("#td_media_id").html(data.media_id);
+                $("#td_appid").html(data.appid);
+                $("#td_pagepath").html(data.pagepath);
+
+                //$("#td_ParentId_opt").val(data.ParentId);
+                //$("#td_MenuName_opt").val(data.MenuName);
+                //$("#td_LinkUrl_opt").val(data.LinkUrl);
+                //$("#td_SortOrder_opt").val(data.SortOrder);
+            },
+            error: function () {
+                alert("提交数据失败！");
+            }
+        });
+    };
+</script>
