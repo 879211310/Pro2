@@ -1,0 +1,65 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var permList = ViewBag.perm as List<MyProject.Core.Dtos.PermDto>;
+    if (permList == null)
+    {
+        permList = new List<MyProject.Core.Dtos.PermDto>();
+    }
+    var selectList = ViewData["ParentList"] as List<SelectListItem>;
+}
+@using MyProject.Matrix.Controllers.Core;
+ 
+<body style="background-color:#F9F9F9;margin-top:0px;"> 
+<div class="widget-box" style="margin-top:0;">
+          <div class="widget-title"> 
+            <h5>微信菜单</h5>
+          </div>
+          <div class="widget-content nopadding"> 
+                  <div>
+                    <div class="btn-group dropup">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">原始
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+            <li>
+                <a href="#">功能</a>
+            </li>
+            <li>
+                <a href="#">另一个功能</a>
+            </li>
+            <li>
+                <a href="#">其他</a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="#">分离的链接</a>
+            </li>
+        </ul>
+    </div>
+                      <div class="btn-group dropup">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">原始
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+            <li>
+                <a href="#">功能</a>
+            </li>
+            <li>
+                <a href="#">另一个功能</a>
+            </li>
+            <li>
+                <a href="#">其他</a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="#">分离的链接</a>
+            </li>
+        </ul>
+    </div>
+                  </div>  
+               <div>
+                    
+                  </div>  
+          </div> 
+        </div> 
+</body>   

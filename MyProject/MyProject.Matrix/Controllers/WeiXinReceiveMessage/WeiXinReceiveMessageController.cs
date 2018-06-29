@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace MyProject.Matrix.Controllers.WeiXinReceiveMessage
 {
-    public class WeiXinReceiveMessageController : Controller
+    public class WeiXinReceiveMessageController : BaseController
     {
         private readonly WeiXinReceiveMessageTask _message = new WeiXinReceiveMessageTask();
 

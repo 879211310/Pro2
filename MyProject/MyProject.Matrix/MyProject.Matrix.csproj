@@ -131,6 +131,7 @@
     <Compile Include="Controllers\AdminUsers\ViewModels\ChangePasswordModel.cs" />
     <Compile Include="Controllers\AdminUsers\ViewModels\SaveAdminUserModel.cs" />
     <Compile Include="Controllers\WeiXinMediaMessage\WeiXinMediaMessageController.cs" />
+    <Compile Include="Controllers\WeiXinMenu\WeiXinMenuController.cs" />
     <Compile Include="Controllers\WeiXinReceiveMessage\WeiXinReceiveMessageController.cs" />
     <Compile Include="Controllers\WeiXinReplyMessage\Models\WeiXinReplyMessageModel.cs" />
     <Compile Include="Controllers\WeiXinReplyMessage\WeiXinReplyMessageController.cs" />
@@ -153,6 +154,7 @@
     <Compile Include="Controllers\SysManage\ViewModels\SavePowerModel.cs" />
     <Compile Include="Controllers\SysManage\ViewModels\SaveUserRoleModel.cs" />
     <Compile Include="Controllers\SysManage\ViewModels\UserRoleModel.cs" />
+    <Compile Include="Controllers\WeiXinUser\WeiXinUserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -587,6 +589,8 @@
     <Content Include="Views\WeiXinReceiveMessage\Index.cshtml" />
     <Content Include="Views\WeiXinReplyMessage\Index.cshtml" />
     <Content Include="Views\WeiXinReplyMessage\Save.cshtml" />
+    <Content Include="Views\WeiXinUser\Index.cshtml" />
+    <Content Include="Views\WeiXinMenu\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

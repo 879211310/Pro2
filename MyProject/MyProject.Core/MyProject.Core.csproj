@@ -55,12 +55,14 @@
     <Compile Include="Entities\SysException.cs" />
     <Compile Include="Entities\SysLog.cs" />
     <Compile Include="Entities\WeiXinMediaMessage.cs" />
+    <Compile Include="Entities\WeiXinMenu.cs" />
     <Compile Include="Entities\WeiXinReplyMessage.cs" />
     <Compile Include="Entities\WeiXinReceiveMessage.cs" />
     <Compile Include="Entities\WeiXinUser.cs" />
     <Compile Include="Enums\LogTypeEnum.cs" />
     <Compile Include="Enums\WeiXinMediaMessageEnum.cs" />
     <Compile Include="Enums\WeiXinMessageTypeEnum.cs" />
+    <Compile Include="Enums\WeiXinUserEnum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
