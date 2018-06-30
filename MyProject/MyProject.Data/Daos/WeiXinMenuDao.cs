@@ -16,5 +16,17 @@ namespace MyProject.Data.Daos
             var sql = Sql.Builder.Where("1=1");
             return Query<WeiXinMenu>(sql).ToList();
         }
+
+        public WeiXinMenu GetById(int menuId)
+        {
+            var sql = Sql.Builder.Where("menuid=@0",menuId);
+            return FirstOrDefault<WeiXinMenu>(sql);
+        }
+
+        public void Delete(int menuId)
+        {
+            var sql = Sql.Builder.Append("delete WeiXinMenu where menuid=@0",menuId);
+            Execute(sql);
+        }
     }
 }
