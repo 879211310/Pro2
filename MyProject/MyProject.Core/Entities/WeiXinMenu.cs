@@ -13,7 +13,7 @@ namespace MyProject.Core.Entities
     [TableName("WeiXinMenu")]
     //[PrimaryKey("menuid")]
     public class WeiXinMenu
-    {
+    { 
         public int menuid { get; set; }
         public string type { get; set; }
         public string name { get; set; }

@@ -5,7 +5,7 @@
     {
         permList = new List<MyProject.Core.Dtos.PermDto>();
     }
-    var selectList = ViewData["ParentList"] as List<SelectListItem>;
+    var selectList =ViewBag.replay as List<SelectListItem>;
 }
 @using MyProject.Matrix.Controllers.Core;
  
@@ -101,46 +101,7 @@
             <div id="opt">
                 <div style="width: 40%; float: left; margin: 20px 80px">
                     <button class="btn btn-primary" id="btn_add">添加/修改</button> 
-                    <button class="btn btn-danger" id="btn_del">删除</button>
-                    @*<div class="widget-box" style="margin-top: 0; display: block;" id="div_opt_1">
-                        <div class="widget-title">
-                            <h5>菜单信息</h5>
-                        </div>
-                        <div class="widget-content nopadding">
-                            <table class="table table-bordered table-striped">
-                                <tbody>
-                                    <tr class="even gradeC">
-                                        <td style="width: 150px;">菜单名称</td>
-                                        <td id="td_name"></td>
-                                    </tr>
-                                    <tr class="even gradeA">
-                                        <td>类型</td>
-                                        <td id="td_type"></td>
-                                    </tr>
-                                    <tr class="odd gradeA">
-                                        <td>KEY值</td>
-                                        <td id="td_key"></td>
-                                    </tr>
-                                    <tr class="odd gradeX">
-                                        <td>链接</td>
-                                        <td id="td_url"></td>
-                                    </tr>
-                                      <tr class="odd gradeX">
-                                        <td>媒体Id</td>
-                                        <td id="td_media_id"></td>
-                                    </tr>
-                                      <tr class="odd gradeX">
-                                        <td>小程序的appid</td>
-                                        <td id="td_appid"></td>
-                                    </tr>
-                                      <tr class="odd gradeX">
-                                        <td>小程序的页面路径</td>
-                                        <td id="td_pagepath"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>*@
+                    <button class="btn btn-danger" id="btn_del">删除</button> 
                     <div class="widget-box" style="margin-top: 0; " id="div_opt_2">
                         <div class="widget-title">
                             <h5 id="title_opt"></h5>
@@ -152,7 +113,7 @@
                                         <td style="width: 150px;">类型</td>
                                         <td>
                                             <div class="controls">
-                                                <select id="td_type">  
+                                                <select id="td_type" style="width: 50%; height: 30px;">  
                                                     <option value="click">点击</option> 
                                                     <option value="view">跳转</option> 
                                                     <option value="miniprogram">小程序</option>
@@ -174,16 +135,42 @@
                                             <input type="text" class="span11" placeholder="菜单名称" id="td_name" style="width: 50%; height: 30px;" />
                                         </td>
                                     </tr>
-                                    <tr class="even gradeA">
-                                        <td>菜单Url</td>
-                                        <td>
-                                            <input type="text" class="span11" placeholder="菜单Url" id="td_key" style="width: 80%; height: 30px;" />
+                                    <tr class="even gradeA" id="key">
+                                        <td>菜单KEY值</td>
+                                        <td> 
+                                             <select id="td_key" style="width: 50%; height: 30px;">
+                            @if (selectList != null)
+                            {
+                                foreach (var item in selectList)
+                                {
+                                    <option value="@item.Value">@item.Text</option>
+                                }
+                            } 
+                        </select>
                                         </td>
                                     </tr>
-                                    <tr class="odd gradeA">
-                                        <td>排序</td>
+                                    <tr class="odd gradeA" id="url">
+                                        <td>链接</td>
                                         <td>
-                                            <input type="text" class="span11" placeholder="排序" id="td_SortOrder_opt" style="width: 20%; height: 30px;" />
+                                            <input type="text" class="span11" placeholder="链接" id="td_url" style="width: 100%; height: 30px;" />
+                                        </td>
+                                    </tr>
+                                     <tr class="odd gradeA" id="mediaid">
+                                        <td>媒体ID</td>
+                                        <td>
+                                            <input type="text" class="span11" placeholder="媒体ID" id="td_media_id" style="width: 50%; height: 30px;" />
+                                        </td>
+                                    </tr>
+                                     <tr class="odd gradeA" id="appid">
+                                        <td>小程序的appid</td>
+                                        <td>
+                                            <input type="text" class="span11" placeholder="小程序的appid" id="td_appid" style="width: 50%; height: 30px;" />
+                                        </td>
+                                    </tr>
+                                     <tr class="odd gradeA" id="pagepath">
+                                        <td>小程序的页面路径</td>
+                                        <td>
+                                            <input type="text" class="span11" placeholder="小程序的页面路径" id="td_pagepath" style="width: 100%; height: 30px;" />
                                         </td>
                                     </tr>
                                     <tr class="odd gradeA">
@@ -205,29 +192,146 @@
 <script type="text/javascript">
     var menuid = 0;//菜单Id
     $(function () {
-        $("#menu button").on("click", function () {//点击按钮拿menuid
-            menuid = $(this).attr("id");
-            $("#title_opt").html("选择的菜单："+$(this).html());
-            if (parseInt(menuid) > 1) {
-                var html = $("#" + (parseInt(menuid) - 1)).html(); 
-                if (html.indexOf("菜单") != -1) {
+        $("#menu button").on("click", function () {//点击按钮拿menuid 
+            var mid = $(this).attr("id");
+            if (parseInt(mid) > 1) {
+                var html = $("#" + (parseInt(mid) - 1)).html();
+                if (html !=null && html.indexOf("菜单") != -1) {
                     alert("请按菜单从左到右，从下到上的顺序操作菜单！");
                     return false;
+                } else {
+                    menuid = $(this).attr("id");
+                    $("#title_opt").html("选择的菜单：" + $(this).html());
                 }
+            } else {
+                menuid = $(this).attr("id");
+                $("#title_opt").html("选择的菜单：" + $(this).html());
             }
             Initialize(menuid);
         });
-        $("#menu a").on("click", function () {//点击a标签拿menuid
-            menuid = $(this).attr("id");
-            $("#title_opt").html("选择的菜单：" + $(this).html());
-            if (parseInt(menuid) > 10) {
-                var html = $("#" + (parseInt(menuid) - 1)).html();
-                if (html.indexOf("菜单") != -1) {
+        $("#menu a").on("click", function () {//点击a标签拿menuid 
+            var mid = $(this).attr("id");
+            if (parseInt(mid) > 10) {
+                var html = $("#" + (parseInt(mid) - 1)).html();
+                if (html != null && html.indexOf("菜单") != -1) {
                     alert("请按菜单从左到右，从下到上的顺序操作菜单！");
                     return false;
+                } else {
+                    menuid = $(this).attr("id");
+                    $("#title_opt").html("选择的菜单：" + $(this).html());
                 }
+            } else {
+                menuid = $(this).attr("id");
+                $("#title_opt").html("选择的菜单：" + $(this).html());
             }
             Initialize(menuid);
+        });
+
+        //提交菜单数据
+        $("#td_submit_opt").click(function () {
+            var td_name= $("#td_name").val();
+            var td_type = $("#td_type").val();
+            var td_key = $("#td_key").val();
+            var td_url = $("#td_url").val();
+            var td_media_id = $("#td_media_id").val();
+            var td_appid = $("#td_appid").val();
+            var td_pagepath = $("#td_pagepath").val(); 
+            $.ajax({
+                type: "POST",
+                url: "/WeiXinMenu/Save",
+                data: { menuid: menuid, appid: td_appid, key: td_key, media_id: td_media_id, name: td_name, pagepath: td_pagepath, type: td_type, url: td_url },
+                success: function (data) {
+                    alert(data.Msg);
+                    $("#title_opt").html("选择的菜单：" + td_name);
+                    $("#" + menuid).html(td_name);
+                },
+                error: function () {
+                    alert("提交数据失败！");
+                }
+            });
+
+        });
+
+         
+        var type = "click"; 
+        switch (type) {
+            case "click":
+            case "location_select":
+            case "pic_weixin":
+            case "pic_photo_or_album":
+            case "pic_sysphoto":
+            case "scancode_waitmsg":
+            case "scancode_push":
+                $("#key").css("display", "table-row");
+                $("#url").css("display", "none");
+                $("#mediaid").css("display", "none");
+                $("#appid").css("display", "none");
+                $("#pagepath").css("display", "none");
+                break;
+            case "view":
+                $("#key").css("display", "none");
+                $("#url").css("display", "table-row");
+                $("#mediaid").css("display", "none");
+                $("#appid").css("display", "none");
+                $("#pagepath").css("display", "none");
+                break;
+            case "miniprogram":
+                $("#key").css("display", "none");
+                $("#url").css("display", "table-row");
+                $("#mediaid").css("display", "none");
+                $("#appid").css("display", "table-row");
+                $("#pagepath").css("display", "table-row");
+                break;
+            case "media_id":
+            case "view_limited":
+                $("#key").css("display", "none");
+                $("#url").css("display", "none");
+                $("#mediaid").css("display", "table-row");
+                $("#appid").css("display", "none");
+                $("#pagepath").css("display", "none");
+                break;
+
+        }
+        $("#td_type").change(function () {//选择
+            type = $(this).val();
+            switch (type) {
+                case "click":
+                case "location_select":
+                case "pic_weixin":
+                case "pic_photo_or_album":
+                case "pic_sysphoto":
+                case "scancode_waitmsg":
+                case "scancode_push":
+                    $("#key").css("display", "table-row");
+                    $("#url").css("display", "none");
+                    $("#mediaid").css("display", "none");
+                    $("#appid").css("display", "none");
+                    $("#pagepath").css("display", "none"); 
+                    break;
+                case "view":
+                    $("#key").css("display", "none");
+                    $("#url").css("display", "table-row");
+                    $("#mediaid").css("display", "none");
+                    $("#appid").css("display", "none");
+                    $("#pagepath").css("display", "none");
+                    break;
+                case "miniprogram":
+                    $("#key").css("display", "none");
+                    $("#url").css("display", "table-row");
+                    $("#mediaid").css("display", "none");
+                    $("#appid").css("display", "table-row");
+                    $("#pagepath").css("display", "table-row");
+                    break;
+                case "media_id":
+                case "view_limited":
+                    $("#key").css("display", "none");
+                    $("#url").css("display", "none");
+                    $("#mediaid").css("display", "table-row");
+                    $("#appid").css("display", "none");
+                    $("#pagepath").css("display", "none");
+                    break;
+                    
+            }
         });
     });
 
@@ -237,14 +341,24 @@
             url: "/WeiXinMenu/GetByMenuId",//获得菜单信息
             data: { menuId: menuid },
             success: function (data) {
-                $("#td_name").html(data.name);
-                $("#td_type").html(data.type);
-                $("#td_key").html(data.key);
-                $("#td_url").html(data.url);
-                $("#td_media_id").html(data.media_id);
-                $("#td_appid").html(data.appid);
-                $("#td_pagepath").html(data.pagepath);
-                 
+                if (data != null) {
+                    $("#td_name").val(data.name);
+                    $("#td_type").val(data.type);
+                    $("#td_key").val(data.key);
+                    $("#td_url").val(data.url);
+                    $("#td_media_id").val(data.media_id);
+                    $("#td_appid").val(data.appid);
+                    $("#td_pagepath").val(data.pagepath);
+                } else {
+                    $("#td_name").val("");
+                    $("#td_type").val("");
+                    $("#td_key").val("");
+                    $("#td_url").val("");
+                    $("#td_media_id").val("");
+                    $("#td_appid").val("");
+                    $("#td_pagepath").val("");
+                }
+               
             },
             error: function () {
                 alert("提交数据失败！");

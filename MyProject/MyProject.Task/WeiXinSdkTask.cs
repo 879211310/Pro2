@@ -37,7 +37,7 @@ namespace MyProject.Task
         /// <param name="message"></param>
         /// <returns>已经打包成xml的用于回复用户的消息包</returns>
         public string Execute(WeixinMessage message)
-        { 
+        {  
             var result = ""; 
             var openId = message.Body.FromUserName.Value;
             var myUserName = message.Body.ToUserName.Value;

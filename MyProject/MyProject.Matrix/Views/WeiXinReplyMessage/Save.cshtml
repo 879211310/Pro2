@@ -33,12 +33,18 @@
                              @Html.TextBoxFor(c => c.Openid, new { }) 用于测试
                         </td>
                     </tr>
+                    <tr>
+                        <td>@Html.LabelFor(c => c.ReplayType):</td>
+                        <td>
+                            @Html.DropDownListFor(c => c.ReplayType, ViewData["ReplyLists"] as List<SelectListItem>, new { @style = "width:100px;" })
+                        </td>
+                    </tr>
                     <tr class="even gradeA">
-                        <td>@Html.LabelFor(c=>c.MatchKey)：</td>
+                        <td id="keyText">@Html.LabelFor(c=>c.MatchKey)：</td>
                         <td> 
                              @Html.TextBoxFor(c => c.MatchKey, new { }) 
                         </td>
-                    </tr>
+                    </tr> 
                      <tr>
                 <td>@Html.LabelFor(c => c.MsgType):</td>
                 <td>
@@ -299,7 +305,7 @@
                 </td>
                 
             </tr>
-                     <tr class="odd gradeA">
+                <tr class="odd gradeA">
                         <td></td>
                         <td>
                             <button type="submit" class="btn btn-success btn-mini" style ="float: right;">保存</button> 
@@ -313,7 +319,19 @@
 </div>
 <script type="text/javascript">
     $(function () {
-        var msgType = "@(Model.MsgType)";//初始化
+        var replayType = "";
+        var msgType = "1";//初始化
+
+
+        $("#ReplayType").change(function () {//选择
+            replayType = $(this).val();
+            if (replayType == "") {
+                $("#keyText").html("关键字：");
+            } else {
+                $("#keyText").html("Key值：");
+            }
+        });
+        
         switch (msgType) {
             case "1":
                 $("#trContent").css("display", "table-row");

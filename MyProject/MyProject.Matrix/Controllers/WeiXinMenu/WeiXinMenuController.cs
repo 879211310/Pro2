@@ -4,12 +4,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MyProject.Services.Extensions;
+using MyProject.Core.Dtos;
 
 namespace MyProject.Matrix.Controllers.WeiXinMenu
 {
     public class WeiXinMenuController : BaseController
     {
         private readonly WeiXinMenuTask _task = new WeiXinMenuTask();
+        private readonly WeiXinReplyMessageTask _replay = new WeiXinReplyMessageTask();
 
         public ActionResult Index()
         { 
@@ -48,8 +51,8 @@ namespace MyProject.Matrix.Controllers.WeiXinMenu
             var name_34 = _task.GetById(34);
             ViewBag.name_34 = name_34 == null ? "菜单3-4" : name_34.name;
             var name_35 = _task.GetById(35);
-            ViewBag.name_35 = name_35 == null ? "菜单3-5" : name_35.name; 
-
+            ViewBag.name_35 = name_35 == null ? "菜单3-5" : name_35.name;
+            ViewBag.replay = _replay.GetByReplayType().ToSelectList(c => c.MatchKey, c => c.MatchKey);
             return View();
         }
 
@@ -59,5 +62,42 @@ namespace MyProject.Matrix.Controllers.WeiXinMenu
             return Json(_task.GetById(menuId));
         }
 
+        public ActionResult Save(string appid,string key,string media_id,int menuid,string name,string pagepath,string type,string url )
+        {
+            var menuinfo = _task.GetById(menuid);
+            if (menuinfo == null)
+            {
+                menuinfo = new MyProject.Core.Entities.WeiXinMenu()
+                {
+                    creater = GetCurrentAdmin(),
+                    createtime = DateTime.Now,
+                    appid = appid,
+                    key = key,
+                    media_id = media_id,
+                    menuid = menuid,
+                    name = name,
+                    pagepath = pagepath,
+                    type = type,
+                    url = url
+                };
+                _task.Add(menuinfo);
+                return Json(new RequestResultDto() { Ret = 0, Msg = "添加成功" });
+            }
+            else
+            {
+                menuinfo.creater = GetCurrentAdmin();
+                    menuinfo.createtime = DateTime.Now;
+                   menuinfo.appid = appid;
+                    menuinfo.key = key;
+                    menuinfo.media_id = media_id;
+                    menuinfo.name = name;
+                    menuinfo.pagepath = pagepath;
+                    menuinfo.type = type;
+                    menuinfo.url = url;
+                    _task.Update(menuinfo);
+                    return Json(new RequestResultDto() { Ret = 0, Msg = "修改成功" });
+            }
+           
+        }
     }
 }
