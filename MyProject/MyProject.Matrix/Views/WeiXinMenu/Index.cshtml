@@ -152,7 +152,7 @@
                                         <td style="width: 150px;">类型</td>
                                         <td>
                                             <div class="controls">
-                                                <select id="td_ParentId_opt">  
+                                                <select id="td_type">  
                                                     <option value="click">点击</option> 
                                                     <option value="view">跳转</option> 
                                                     <option value="miniprogram">小程序</option>
@@ -171,13 +171,13 @@
                                     <tr class="even gradeA">
                                         <td>菜单名称</td>
                                         <td>
-                                            <input type="text" class="span11" placeholder="菜单名称" id="td_MenuName_opt" style="width: 50%; height: 30px;" />
+                                            <input type="text" class="span11" placeholder="菜单名称" id="td_name" style="width: 50%; height: 30px;" />
                                         </td>
                                     </tr>
                                     <tr class="even gradeA">
                                         <td>菜单Url</td>
                                         <td>
-                                            <input type="text" class="span11" placeholder="菜单Url" id="td_LinkUrl_opt" style="width: 80%; height: 30px;" />
+                                            <input type="text" class="span11" placeholder="菜单Url" id="td_key" style="width: 80%; height: 30px;" />
                                         </td>
                                     </tr>
                                     <tr class="odd gradeA">
@@ -209,17 +209,24 @@
             menuid = $(this).attr("id");
             $("#title_opt").html("选择的菜单："+$(this).html());
             if (parseInt(menuid) > 1) {
-                var html = $("#" + (parseInt(menuid) - 1)).html();
-                console.log(html);
+                var html = $("#" + (parseInt(menuid) - 1)).html(); 
                 if (html.indexOf("菜单") != -1) {
                     alert("请按菜单从左到右，从下到上的顺序操作菜单！");
-                    return;
+                    return false;
                 }
             }
             Initialize(menuid);
         });
         $("#menu a").on("click", function () {//点击a标签拿menuid
             menuid = $(this).attr("id");
+            $("#title_opt").html("选择的菜单：" + $(this).html());
+            if (parseInt(menuid) > 10) {
+                var html = $("#" + (parseInt(menuid) - 1)).html();
+                if (html.indexOf("菜单") != -1) {
+                    alert("请按菜单从左到右，从下到上的顺序操作菜单！");
+                    return false;
+                }
+            }
             Initialize(menuid);
         });
     });
@@ -237,11 +244,7 @@
                 $("#td_media_id").html(data.media_id);
                 $("#td_appid").html(data.appid);
                 $("#td_pagepath").html(data.pagepath);
-
-                //$("#td_ParentId_opt").val(data.ParentId);
-                //$("#td_MenuName_opt").val(data.MenuName);
-                //$("#td_LinkUrl_opt").val(data.LinkUrl);
-                //$("#td_SortOrder_opt").val(data.SortOrder);
+                 
             },
             error: function () {
                 alert("提交数据失败！");
