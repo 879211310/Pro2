@@ -3,5 +3,3 @@ MyProject_log.ldf
 MyProject.mdf
 MyProject/MyProject.Core/bin/Debug/MyProject.Services.pdb
 *.pdb
-*.cache
-*.cache

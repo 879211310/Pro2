@@ -25,11 +25,6 @@ namespace MyProject.Task
             return _dao.GetById(id);
         }
 
-        public List<WeiXinReplyMessage> GetByReplayType()
-        {
-            return _dao.GetByReplayType();
-        }
-
 
         public PagedList<WeiXinReplyMessage> GetPagedList(int pageIndex, int pageSize)
         {
